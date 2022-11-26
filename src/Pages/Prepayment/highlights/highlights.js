@@ -28,9 +28,8 @@ const highlights = (props) => {
           </div>
           <div className={classes.Divider}></div>
           <RightContainer />
-
-          <div class="purchase-personalized-highlights_noteContainer__SXU8z">
-            <p class="purchase-personalized-highlights_noteText__YlX0y">
+          <div className={classes.NoteContainer}>
+            <p className={classes.NoteText}>
               Customized according to your <b>Body Type &amp; BMI</b>
             </p>
           </div>
