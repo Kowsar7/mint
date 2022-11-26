@@ -15,10 +15,37 @@ const rightContainer = (props) => {
       <div className={classes.ListContainer}>
         <div className={`${classes.Container} ${classes.IsShown}`}>
           <ul className={classes.List}>
-            <ListItem />
-
-            <li class="purchase-personalized-list_item__iOpXE purchase-personalized-list_animateItem1__SMDcT">
-              <div class="purchase-personalized-list_iconContainer__YTH5D">
+            <ListItem
+              title="Goal"
+              text="Get fit body"
+              svg={
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18.871 12.2451C18.871 10.6933 18.4531 9.23253 17.7124 7.98282L16.2765 9.41875C16.6944 10.2753 16.9261 11.2271 16.9261 12.2451C16.9261 15.8369 14.0046 18.7336 10.4376 18.7336C6.86641 18.7336 3.94491 15.8163 3.94491 12.2451C3.94491 8.67802 6.86641 5.75652 10.4335 5.75652C11.4514 5.75652 12.4032 5.98826 13.2598 6.40621L14.6998 4.97028C13.4501 4.22956 11.9894 3.81161 10.4376 3.81161C5.77809 3.81161 2 7.5897 2 12.2451C2 14.7486 3.08832 16.9956 4.82633 18.5267L3.24971 22.1434C3.15867 22.3296 3.17936 22.5365 3.29523 22.7227C3.41109 22.8841 3.59731 23 3.80421 23H6.16707C6.3988 23 6.63054 22.8593 6.72158 22.6524L7.8099 20.2647C8.64579 20.542 9.52307 20.6827 10.4293 20.6827C11.3563 20.6827 12.2128 20.5213 13.0487 20.2647L14.1371 22.6524C14.2281 22.8593 14.4598 23 14.6916 23H17.0627C17.2696 23 17.4558 22.909 17.5717 22.7227C17.6876 22.5614 17.7124 22.3296 17.6172 22.1434L16.0406 18.5267C17.7579 16.9956 18.871 14.7486 18.871 12.2451Z"
+                    fill="var(--primary400Color)"
+                  ></path>
+                  <path
+                    d="M11.7784 7.91253C11.3605 7.77184 10.9218 7.70563 10.4335 7.70563C7.92998 7.70563 5.88989 9.74571 5.88989 12.2493C5.88989 14.7528 7.92998 16.7929 10.4335 16.7929C12.9371 16.7929 14.9772 14.7528 14.9772 12.2493C14.9772 11.7858 14.9068 11.3472 14.7703 10.9292L11.9191 13.7804C11.526 14.1735 10.9922 14.4052 10.4128 14.4052C9.85833 14.4052 9.32452 14.1735 8.90657 13.7804C8.07067 12.9445 8.07067 11.6037 8.90657 10.7678L11.7784 7.91253Z"
+                    fill="var(--primary400Color)"
+                  ></path>
+                  <path
+                    opacity="0.4"
+                    d="M21.6269 3.46404C21.5111 3.18679 21.2338 3.00058 20.9317 3.00058H19.682V1.75087C19.682 1.44879 19.4958 1.17154 19.2185 1.05567C18.9413 0.939801 18.6144 1.01015 18.3826 1.21705L16.5288 3.07092C16.3881 3.21162 16.297 3.3937 16.297 3.60474V5.08618L9.7878 11.6202C9.4402 11.9678 9.4402 12.5472 9.7878 12.9196C9.94919 13.081 10.1809 13.1969 10.4375 13.1969C10.6692 13.1969 10.901 13.1058 11.0872 12.9196L17.6419 6.36072H19.1234C19.3303 6.36072 19.5165 6.26968 19.6572 6.12898L21.5111 4.27511C21.6973 4.06821 21.7676 3.7413 21.6269 3.46404Z"
+                    fill="var(--primary400Color)"
+                  ></path>
+                </svg>
+              }
+            />
+            <ListItem
+              title="Dietary restrictions"
+              text="Works with low-carb diet"
+              svg={
                 <svg
                   width="24"
                   height="24"
@@ -45,18 +72,12 @@ const rightContainer = (props) => {
                     fill="var(--primary400Color)"
                   ></path>
                 </svg>
-              </div>
-              <div>
-                <h4 class="purchase-personalized-list_itemTitle__5hjGo">
-                  Dietary restrictions
-                </h4>
-                <p class="purchase-personalized-list_itemText__SqDVY">
-                  Works with low-carb diet
-                </p>
-              </div>
-            </li>
-            <li class="purchase-personalized-list_item__iOpXE purchase-personalized-list_animateItem2__fbNq_">
-              <div class="purchase-personalized-list_iconContainer__YTH5D">
+              }
+            />
+            <ListItem
+              title="Calories"
+              text="1340 cal"
+              svg={
                 <svg
                   width="24"
                   height="24"
@@ -74,18 +95,12 @@ const rightContainer = (props) => {
                     fill="var(--primary400Color)"
                   ></path>
                 </svg>
-              </div>
-              <div>
-                <h4 class="purchase-personalized-list_itemTitle__5hjGo">
-                  Calories
-                </h4>
-                <p class="purchase-personalized-list_itemText__SqDVY">
-                  1340 cal
-                </p>
-              </div>
-            </li>
-            <li class="purchase-personalized-list_item__iOpXE purchase-personalized-list_animateItem3__mi92M">
-              <div class="purchase-personalized-list_iconContainer__YTH5D">
+              }
+            />
+            <ListItem
+              title="Other preferences"
+              text="Fasting on weekends"
+              svg={
                 <svg
                   width="24"
                   height="24"
@@ -103,16 +118,31 @@ const rightContainer = (props) => {
                     fill="var(--primary400Color)"
                   ></path>
                 </svg>
-              </div>
-              <div>
-                <h4 class="purchase-personalized-list_itemTitle__5hjGo">
-                  Other preferences
-                </h4>
-                <p class="purchase-personalized-list_itemText__SqDVY">
-                  Fasting on weekends
-                </p>
-              </div>
-            </li>
+              }
+            />
+            <ListItem
+              title="Other preferences"
+              text="Fasting on weekends"
+              svg={
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10.8 3.59999V9.19997C10.8 9.62432 10.6314 10.0313 10.3313 10.3313C10.0313 10.6314 9.62432 10.8 9.19997 10.8H3.59999C3.17565 10.8 2.76868 10.6314 2.46863 10.3313C2.16857 10.0313 2 9.62432 2 9.19997V3.59999C2 3.17565 2.16857 2.76868 2.46863 2.46863C2.76868 2.16857 3.17565 2 3.59999 2H9.19997C9.62432 2 10.0313 2.16857 10.3313 2.46863C10.6314 2.76868 10.8 3.17565 10.8 3.59999ZM20.3999 2H14.8C14.3756 2 13.9686 2.16857 13.6686 2.46863C13.3685 2.76868 13.2 3.17565 13.2 3.59999V9.19997C13.2 9.62432 13.3685 10.0313 13.6686 10.3313C13.9686 10.6314 14.3756 10.8 14.8 10.8H20.3999C20.8243 10.8 21.2312 10.6314 21.5313 10.3313C21.8314 10.0313 21.9999 9.62432 21.9999 9.19997V3.59999C21.9999 3.17565 21.8314 2.76868 21.5313 2.46863C21.2312 2.16857 20.8243 2 20.3999 2ZM9.19997 13.2H3.59999C3.17565 13.2 2.76868 13.3685 2.46863 13.6686C2.16857 13.9686 2 14.3756 2 14.8V20.3999C2 20.8243 2.16857 21.2312 2.46863 21.5313C2.76868 21.8314 3.17565 21.9999 3.59999 21.9999H9.19997C9.62432 21.9999 10.0313 21.8314 10.3313 21.5313C10.6314 21.2312 10.8 20.8243 10.8 20.3999V14.8C10.8 14.3756 10.6314 13.9686 10.3313 13.6686C10.0313 13.3685 9.62432 13.2 9.19997 13.2Z"
+                    fill="var(--primary400Color)"
+                  ></path>
+                  <path
+                    opacity="0.4"
+                    d="M15.1094 13.8955C15.833 13.412 16.6837 13.1539 17.5539 13.1539C18.7209 13.1539 19.84 13.6175 20.6652 14.4427C21.4903 15.2678 21.9539 16.387 21.9539 17.5539C21.9539 18.4241 21.6958 19.2748 21.2124 19.9984C20.7289 20.722 20.0417 21.2859 19.2377 21.619C18.4337 21.952 17.549 22.0391 16.6955 21.8694C15.842 21.6996 15.058 21.2805 14.4427 20.6652C13.8273 20.0498 13.4083 19.2658 13.2385 18.4123C13.0687 17.5588 13.1558 16.6741 13.4889 15.8701C13.8219 15.0661 14.3858 14.3789 15.1094 13.8955Z"
+                    fill="var(--primary400Color)"
+                  ></path>
+                </svg>
+              }
+            />
           </ul>
         </div>
         <div class="purchase-personalized-highlights_animationArrowsContainer__lucTM">
