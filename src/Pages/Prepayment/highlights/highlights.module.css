@@ -32,6 +32,10 @@
     text-align: left;
 }
 
+html[dir= 'rtl'] .Title {
+    text-align: right;
+}
+
 .Text {
     margin-bottom: 20px;
     color: var(--neutral900Color);
@@ -40,6 +44,10 @@
     letter-spacing: -.01em;
     line-height: 1.43;
     text-align: left;
+}
+
+html[dir= 'rtl'] .Text {
+    text-align: right;
 }
 
 .AnimationLabel1, .AnimationLabel3 {
@@ -79,6 +87,10 @@
     text-align: left;
 }
 
+html[dir= 'rtl'] .DisclaimerText {
+    text-align: right;
+}
+
 .Divider {
     width: 100%;
     height: 1px;
@@ -110,6 +122,11 @@
     line-height: 1.33;
 }
 
+html[dir='rtl'] .NoteText {
+    padding-left: 0;
+    padding-right: 10px;
+}
+
 .NoteText b {
     font-weight: 600;
 }
@@ -137,4 +154,9 @@
     background-color: var(--primary400Color);
     border-radius: 4px;
     content: "";
+}
+
+html[dir='rtl'] .NoteText::before {
+    left: auto;
+    right: 0;
 }

@@ -1,16 +1,18 @@
 import React from "react";
-import { Component } from "react";
 
 import classes from "./Prepayment.module.css";
+import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
+import { Navigate } from "react-router";
 import Header from "./header/header";
 import Banner from "./banner/banner";
 import BmiContainer from "./bmiContainer/bmiContainer";
 import Highlights from "./highlights/highlights";
 import SuccessPercent from "./successPercent/successPercent";
+import { connect } from "react-redux";
 
-class PrePayment extends Component {
-  render() {
-    return (
+const PrePayment = (props) => {
+  return (
+    <Auxiliary>
       <div className={classes.PageContainer} data-page="general" id="page">
         <div>
           <Header />
@@ -66,8 +68,13 @@ class PrePayment extends Component {
         </div>
       </div> */}
       </div>
-    );
-  }
-}
+      {this.props.checkout2 === true ? <Navigate to="/checkout" /> : null}
+    </Auxiliary>
+  );
+};
 
-export default PrePayment;
+const mapStateToProps = (state) => ({
+  checkout2: state.quiz.checkout2,
+});
+
+export default connect(mapStateToProps)(PrePayment);

@@ -49,14 +49,16 @@ const bmiContainer = (props) => {
                 </div>
                 <div className={classes.Scale}></div>
 
-                <span className={classes.MinimumScaleValue}>UNDERWEIGHT</span>
-                <span className={classes.MinimumScaleValue}>NORMAL</span>
+                <span className={classes.MinimumScaleValue}>پایین</span>
+                <span className={classes.MinimumScaleValue}>متوسط</span>
                 <span
                   className={` ${classes.MinimumScaleValue} ${classes.IsSelected} `}
                 >
-                  OVERWEIGHT
+                  بالا
                 </span>
-                <span className={classes.MinimumScaleValue}>OBESE</span>
+                <span className={classes.MinimumScaleValue}>
+                  بالاترین حد ممکن
+                </span>
               </div>
               <BmiNote />
             </div>

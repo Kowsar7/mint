@@ -8,6 +8,10 @@
     display: flex;
 }
 
+html[dir='rtl'] .Container {
+    margin-right: 155px
+}
+
 .List {
     max-width: 160px;
 }

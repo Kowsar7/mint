@@ -322,3 +322,9 @@ export const goToCheckout = () => {
     type: actionTypes.GO_TO_CHECKOUT,
   };
 };
+
+export const goToCheckout2 = () => {
+  return {
+    type: actionTypes.GO_TO_CHECKOUT2,
+  };
+};

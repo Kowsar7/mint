@@ -25,6 +25,7 @@ const initialState = {
   token: "",
   type: "",
   checkout: false,
+  checkout2: false,
 };
 
 const quizReducer = (state = initialState, action) => {
@@ -126,6 +127,8 @@ const quizReducer = (state = initialState, action) => {
       return updateObject(state, { type: action.linkType });
     case actionTypes.GO_TO_CHECKOUT:
       return updateObject(state, { checkout: true });
+    case actionTypes.GO_TO_CHECKOUT2:
+      return updateObject(state, { checkout2: true });
     default:
       return state;
   }

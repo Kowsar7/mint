@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/mint/generated-questionary" element={<QuizPage />} />
-        <Route path="/pre-checkout" element={<PrePayment />} />
+        <Route path="/preCheckout" element={<PrePayment />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<QuizPage />} />

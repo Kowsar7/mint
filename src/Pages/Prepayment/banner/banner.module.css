@@ -51,11 +51,20 @@
     content: "";
 }
 
+html[dir='rtl'] .BannerTextContainer:before {
+    right: 10px;
+}
+
 .BannerText {
     width: 100%;
     max-width: 175px;
     transform: translateX(14px);
     margin-left: 15px;
+}
+
+html[dir='rtl'] .BannerText {
+    margin-left: 0;
+    margin-right: 45px;
 }
 
 .BannerImageContainer {

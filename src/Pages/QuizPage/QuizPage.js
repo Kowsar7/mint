@@ -76,7 +76,7 @@ class QuizPage extends Component {
           </div>
         )}
         {/* {this.props.isGenderSelected === false ? <Navigate to="/" /> : null} */}
-        {this.props.checkout === true ? <Navigate to="/checkout" /> : null}
+        {this.props.checkout === true ? <Navigate to="/preCheckout" /> : null}
       </Auxiliary>
     );
   }
