@@ -20,3 +20,37 @@
     line-height: 1.17;
     text-align: center;
 }
+
+.FixedToBottomBlock {
+    position: fixed;
+    z-index: 3;
+    right: 0;
+    bottom: -5px;
+    left: 0;
+    padding: 18px 20px;
+    text-align: center;
+}
+
+.Container {
+    align-items: center;
+    border: none;
+    border-radius: var(--buttonRadius);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    letter-spacing: .007em;
+    padding: var(--buttonPadding);
+    text-shadow: 0 1px 2px var(--buttonTextShadowColor);
+    width: 100%;
+    background: var(--secondary1Color);
+    box-shadow: 0 4px 16px var(--secondaryButtonShadowColor);
+}
+
+.Body1Bold {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.5;
+}

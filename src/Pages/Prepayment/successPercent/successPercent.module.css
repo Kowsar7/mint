@@ -1,0 +1,68 @@
+.Container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 18px 24px;
+    margin: 0 auto;
+    background-color: var(--background3Color);
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgb(22 42 65 / 6%), 0 12px 24px rgb(7 21 37 / 8%);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease-in-out;
+    
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.InfoButton {
+    user-select: none;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.InfoIcon {
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+.Percent {
+    color: var(--primary400Color);
+    font-size: 88px;
+    font-weight: 700;
+    line-height: .9;
+}
+
+.PercentUnit {
+    color: var(--primary400Color);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.Text {
+    max-width: 300px;
+    margin-top: 16px;
+    color: var(--neutral900Color);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.21;
+    text-align: center;
+}
+
+.Text span {
+    margin-top: 0;
+    color: var(--primary400Color);
+    font-weight: 700;
+}
