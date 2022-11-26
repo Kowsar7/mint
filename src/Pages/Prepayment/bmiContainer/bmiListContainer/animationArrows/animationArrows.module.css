@@ -2,6 +2,7 @@
     position: absolute;
     top: 0;
     right: -14px;
+    z-index: -1;
 }
 
 .Container {
@@ -15,26 +16,26 @@
 }
 
 .AnimationTriangle1 {
-    -webkit-animation: purchase-personalized-animation-arrows_opacityAnimation1__Nd8Dr 1.5s ease-in-out 3s infinite;
-    animation: purchase-personalized-animation-arrows_opacityAnimation1__Nd8Dr 1.5s ease-in-out 3s infinite;
+    -webkit-animation: taadaa1 1.5s ease-in-out 3s infinite;
+    animation: taadaa1 1.5s ease-in-out 3s infinite;
     transform: translateX(64px);
 }
 
 .AnimationTriangle2 {
-    -webkit-animation: purchase-personalized-animation-arrows_opacityAnimation2__bVEBi 1.5s ease-in-out 3s infinite;
-    animation: purchase-personalized-animation-arrows_opacityAnimation2__bVEBi 1.5s ease-in-out 3s infinite;
+    -webkit-animation: taadaa2 1.5s ease-in-out 3s infinite;
+    animation: taadaa2 1.5s ease-in-out 3s infinite;
     transform: translateX(49px);
 }
 
 .AnimationTriangle3 {
-    -webkit-animation: purchase-personalized-animation-arrows_opacityAnimation3__bAeo7 1.5s ease-in-out 3s infinite;
-    animation: purchase-personalized-animation-arrows_opacityAnimation3__bAeo7 1.5s ease-in-out 3s infinite;
+    -webkit-animation: taadaa3 1.5s ease-in-out 3s infinite;
+    animation: taadaa3 1.5s ease-in-out 3s infinite;
     transform: translateX(34px);
 }
 
 .AnimationTriangle4 {
-    -webkit-animation: purchase-personalized-animation-arrows_opacityAnimation4__McmDm 1.5s ease-in-out 3s infinite;
-    animation: purchase-personalized-animation-arrows_opacityAnimation4__McmDm 1.5s ease-in-out 3s infinite;
+    -webkit-animation: taadaa4 1.5s ease-in-out 3s infinite;
+    animation: taadaa4 1.5s ease-in-out 3s infinite;
     transform: translateX(19px);
 }
 
@@ -44,3 +45,45 @@
     right: 0;
     max-height: 264px;
 }
+
+
+@keyframes taadaa1 { 
+    0% {
+      opacity: 0;
+    }
+  
+    25% {
+      opacity: 1;
+    }
+  }
+
+@keyframes taadaa2 { 
+    0% {
+      opacity: 0;
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  }
+  
+@keyframes taadaa3 { 
+    0% {
+      opacity: 0;
+    }
+  
+    75% {
+      opacity: 1;
+    }
+  }
+  
+@keyframes taadaa4 { 
+    0% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }
+  

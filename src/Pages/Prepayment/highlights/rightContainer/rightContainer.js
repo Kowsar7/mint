@@ -1,4 +1,5 @@
 import React from "react";
+import { AnimatedOnScroll } from "react-animated-css-onscroll";
 
 import classes from "./rightContainer.module.css";
 import ListItem from "./listItem/listItem";
@@ -7,16 +8,19 @@ import AnimationArrows from "../../bmiContainer/bmiListContainer/animationArrows
 const rightContainer = (props) => {
   return (
     <div className={classes.RightContainer}>
-      <img
-        src="https://res.cloudinary.com/drhg6wpcy/image/upload/dpr_1.0,fl_lossy,q_auto:eco/cwbwblyucnqrzxrnml8y"
-        srcset="https://res.cloudinary.com/drhg6wpcy/image/upload/dpr_1.0,fl_lossy,q_auto:eco/cwbwblyucnqrzxrnml8y 1x, https://res.cloudinary.com/drhg6wpcy/image/upload/dpr_2.0,fl_lossy,q_auto:eco/cwbwblyucnqrzxrnml8y 2x"
-        alt=""
-        className={`${classes.Image} ${classes.IsShown}`}
-      />
+      <AnimatedOnScroll animationIn="fadeInRight" animationInDuration={2000}>
+        <img
+          src="https://res.cloudinary.com/drhg6wpcy/image/upload/dpr_1.0,fl_lossy,q_auto:eco/cwbwblyucnqrzxrnml8y"
+          srcئet="https://res.cloudinary.com/drhg6wpcy/image/upload/dpr_1.0,fl_lossy,q_auto:eco/cwbwblyucnqrzxrnml8y 1x, https://res.cloudinary.com/drhg6wpcy/image/upload/dpr_2.0,fl_lossy,q_auto:eco/cwbwblyucnqrzxrnml8y 2x"
+          alt=""
+          className={`${classes.Image} ${classes.IsShown}`}
+        />
+      </AnimatedOnScroll>
       <div className={classes.ListContainer}>
         <div className={`${classes.Container} ${classes.IsShown}`}>
           <ul className={classes.List}>
             <ListItem
+              delay={500}
               title="Goal"
               text="Get fit body"
               svg={
@@ -44,6 +48,7 @@ const rightContainer = (props) => {
               }
             />
             <ListItem
+              delay={1000}
               title="Dietary restrictions"
               text="Works with low-carb diet"
               svg={
@@ -76,6 +81,7 @@ const rightContainer = (props) => {
               }
             />
             <ListItem
+              delay={1500}
               title="Calories"
               text="1340 cal"
               svg={
@@ -99,6 +105,7 @@ const rightContainer = (props) => {
               }
             />
             <ListItem
+              delay={2000}
               title="Other preferences"
               text="Fasting on weekends"
               svg={

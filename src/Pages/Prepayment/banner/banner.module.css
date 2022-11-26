@@ -35,7 +35,7 @@
     transition: all 1s ease-in-out;
 }
 
-.BannerTextContainerIsShown {
+.IsShown {
     opacity: 1;
     transform: translateY(0);
 }

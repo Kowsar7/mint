@@ -20,6 +20,7 @@ const animationArrows = (props) => {
             fill="var(--primary200Color)"
           ></path>
         </svg>
+
         <svg
           width="110"
           height="398"
@@ -34,6 +35,7 @@ const animationArrows = (props) => {
             fill="var(--primary200Color)"
           ></path>
         </svg>
+
         <svg
           width="110"
           height="398"
@@ -48,6 +50,7 @@ const animationArrows = (props) => {
             fill="var(--primary200Color)"
           ></path>
         </svg>
+
         <svg
           width="110"
           height="398"

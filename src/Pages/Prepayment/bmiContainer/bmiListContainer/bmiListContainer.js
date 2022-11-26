@@ -10,6 +10,7 @@ const bmiListContainer = (props) => {
       <div className={`${classes.Container} ${classes.IsShown}`}>
         <ul className={classes.List}>
           <Item
+            delay={500}
             title="Body type"
             text="Mesomorph"
             svg={
@@ -33,6 +34,7 @@ const bmiListContainer = (props) => {
             }
           />
           <Item
+            delay={1000}
             title="Lifestyle"
             text="Active"
             svg={
@@ -68,6 +70,7 @@ const bmiListContainer = (props) => {
             }
           />
           <Item
+            delay={1500}
             title="Fitness level"
             text="Intermediate"
             svg={
@@ -107,6 +110,7 @@ const bmiListContainer = (props) => {
             }
           />
           <Item
+            delay={2000}
             title="Metabolism"
             text="Moderate, challenging to stay trim"
             svg={

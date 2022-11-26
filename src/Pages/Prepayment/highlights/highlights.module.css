@@ -45,7 +45,7 @@
 .AnimationLabel1, .AnimationLabel3 {
     padding: 4px 6px;
     margin-top: 4px;
-    background: var(--shadow40Primary100Color);
+    background: rgba(248, 118, 145, .1);
     border-radius: 4px;
     color: var(--primary500Color);
     font-weight: 700;

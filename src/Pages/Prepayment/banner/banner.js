@@ -1,4 +1,5 @@
 import React from "react";
+import { AnimatedOnScroll } from "react-animated-css-onscroll";
 
 import classes from "./banner.module.css";
 
@@ -19,11 +20,13 @@ const banner = (props) => {
       >
         <div className={classes.BannerContainer}>
           <div className={classes.BannerContent}>
-            <div className={classes.BannerTextContainer}>
-              <div className={classes.BannerText}>
-                Here is your personalized plan
+            <AnimatedOnScroll animationIn="fadeInUp">
+              <div className={classes.BannerTextContainer}>
+                <div className={classes.BannerText}>
+                  Here is your personalized plan
+                </div>
               </div>
-            </div>
+            </AnimatedOnScroll>
             <div className={classes.BannerImageContainer}>
               <img
                 className={classes.BannerImage}
