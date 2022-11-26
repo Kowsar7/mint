@@ -4,7 +4,7 @@ import SingleSelectQuestion from "./SingleSelectQuestion/SingleSelectQuestion";
 import InputQuestion from "./InputQuestion/InputQuestion";
 import MultiSelectQuestion from "./MultiSelectQuestion/MultiSelectQuestion";
 import DatePicker from "./Calendar/datePicker";
-import GenderSelection from "./GenderSelection/GenderSelection";
+import GenderSelection from "./GenderSelection/genderSelection";
 
 const QuizContent = (props) => {
   let QuestionType;

@@ -78,3 +78,11 @@
     line-height: 1.33;
     text-align: left;
 }
+
+.Divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--neutral200Color);
+    content: "";
+}
+

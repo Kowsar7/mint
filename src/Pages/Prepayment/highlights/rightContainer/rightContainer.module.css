@@ -1,0 +1,34 @@
+.RightContainer {
+    min-height: 289px;
+    padding-top: 16px;
+}
+
+.Image {
+    position: absolute;
+    z-index: 1;
+    right: 11px;
+    bottom: 16px;
+    width: 100%;
+    max-width: 167px;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 1.5s ease-in-out 2s;
+}
+
+.Image , .IsShown {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.ListContainer {
+    position: relative;
+}
+
+.Container {
+    position: relative;
+    display: flex;
+}
+
+.List {
+    max-width: 160px;
+}

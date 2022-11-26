@@ -1,0 +1,39 @@
+.Item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 16px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all .5s ease-in-out;
+
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.IconContainer {
+    padding: 4px;
+    background: var(--exclusiveOfferLogoBackgroundColor);
+    border-radius: 6px;
+    margin-inline-end: 8px;
+}
+
+.IconContainer svg {
+    display: block;
+    fill: var(--primary400Color);
+}
+
+.ItemTitle {
+    color: var(--neutral600Color);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.ItemText {
+    color: var(--neutral900Color);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.33;
+    word-break: break-word;
+}
