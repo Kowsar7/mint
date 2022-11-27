@@ -22,7 +22,7 @@ const PrePayment = (props) => {
             <BmiContainer summery={props.result.summery} />
             <h2 className={classes.Title}>{props.result.highlight.title}</h2>
             <Highlights highlight={props.result.highlight} />
-            <SuccessPercent />
+            <SuccessPercent percentage={props.result.highlight.percentage} />
             <div className={classes.FixedToBottomBlock}>
               <button type="button" className={classes.Container}>
                 <span as="span" className={classes.Body1Bold}>

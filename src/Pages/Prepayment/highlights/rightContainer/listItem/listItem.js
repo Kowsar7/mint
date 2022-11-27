@@ -12,12 +12,12 @@ const listItem = (props) => {
         </div>
         <div>
           <h4 className={classes.ItemTitle}>{props.title}</h4>
-          <p
+          <div
             className={classes.ItemText}
             style={{ color: props.descriptionColor }}
           >
             <div dangerouslySetInnerHTML={{ __html: props.text }} />
-          </p>
+          </div>
         </div>
       </li>
     </AnimatedOnScroll>

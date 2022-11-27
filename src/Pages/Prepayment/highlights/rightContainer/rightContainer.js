@@ -21,7 +21,7 @@ const rightContainer = (props) => {
             {props.highlight.items.map((item, index) => (
               <ListItem
                 key={index}
-                delay={index * 500 + 500}
+                delay={index * 500}
                 title={item.title}
                 text={item.description}
                 descriptionColor={item.descriptionColor}

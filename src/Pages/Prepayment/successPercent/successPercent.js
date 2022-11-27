@@ -24,13 +24,14 @@ const successPercent = (props) => {
             </svg>
           </button>
           <div>
-            <span className={classes.Percent}>90</span>
+            <span className={classes.Percent}>{props.percentage.value}</span>
             <span className={classes.PercentUnit}>%</span>
           </div>
-          <p className={classes.Text}>
-            of people with similar profiles <span>Lost Weight</span> using
-            BetterMe plans
-          </p>
+          <div className={classes.Text}>
+            <div
+              dangerouslySetInnerHTML={{ __html: props.percentage.description }}
+            />
+          </div>
         </div>
       </div>
     </AnimatedOnScroll>

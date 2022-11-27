@@ -12,7 +12,7 @@ const bmiListContainer = (props) => {
           {props.items.map((item, index) => (
             <Item
               key={index}
-              delay={index * 500 + 500}
+              delay={index * 500}
               title={item.title}
               text={item.description}
               descriptionColor={item.descriptionColor}
