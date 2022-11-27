@@ -44,11 +44,7 @@ class QuizPage extends Component {
             }}
           >
             <ProgressContainer result={this.props.result} currentProgress />
-            <Parasite
-              result={this.props.result}
-              goNext={this.props.goNext}
-              // goToCheckout={this.onCheckout}
-            />
+            <Parasite result={this.props.result} goNext={this.props.goNext} />
           </div>
         ) : (
           <div className={classes.Container}>

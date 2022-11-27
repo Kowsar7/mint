@@ -1,7 +1,6 @@
 .Banner {
     display: flex;
     flex-direction: column;
-    background: var(--primary400Color);
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;

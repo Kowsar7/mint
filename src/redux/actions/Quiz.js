@@ -31,7 +31,6 @@ export const clickedonNextButton = (prevCode, answerIndexes) => {
       aids = getState().quiz.result.answers[0].aid;
     }
     console.log(aids);
-
     console.log(getState());
     setTimeout(() => {
       axios
@@ -67,28 +66,49 @@ export const nullAnswerIndex = () => {
 export const clickedonQuizCard = (index, prevAid, prevCode) => {
   return (dispatch, getState) => {
     dispatch(answerQuestion(index));
-    setTimeout(() => {
-      axios
-        .get(
-          "https://mintdoctor.ir/process/v2/main/question.php?Authorization=" +
-            getState().quiz.token +
-            "&type=" +
-            getState().quiz.type +
-            "&code=" +
-            prevCode +
-            "&aid=" +
-            prevAid
-        )
-        .then((res) => {
-          console.log("clickedonQuizCard", res);
-          const code = res.data.result.code;
-          const result = res.data.result;
-          const token = res.data.result.token;
-          window.scrollTo(0, 0);
-          dispatch(saveFetchedData(code, result, token));
-          dispatch(nullAnswerIndex());
-        });
-    }, 1000);
+    if (getState().quiz.result.isResult === "false") {
+      setTimeout(() => {
+        axios
+          .get(
+            "https://mintdoctor.ir/process/v2/main/question.php?Authorization=" +
+              getState().quiz.token +
+              "&type=" +
+              getState().quiz.type +
+              "&code=" +
+              prevCode +
+              "&aid=" +
+              prevAid
+          )
+          .then((res) => {
+            console.log("clickedonQuizCard", res);
+            const code = res.data.result.code;
+            const result = res.data.result;
+            const token = res.data.result.token;
+            window.scrollTo(0, 0);
+            dispatch(saveFetchedData(code, result, token));
+            dispatch(nullAnswerIndex());
+          });
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        axios
+          .get(
+            "https://mintdoctor.ir/process/v2/main/preCheckout.php?code=" +
+              prevCode +
+              "&Authorization=" +
+              getState().quiz.token
+          )
+          .then((res) => {
+            console.log("goNext-preCheckout", res);
+            const result = res.data.result;
+            const code = res.data.result.code;
+            const token = res.data.result.token;
+            window.scrollTo(0, 0);
+            dispatch(saveFetchedData(code, result, token));
+            dispatch(goToCheckout());
+          });
+      }, 1000);
+    }
   };
 };
 
@@ -272,20 +292,17 @@ export const goNext = (prevAid, prevCode) => {
               });
           }, 1000);
     } else {
+      console.log("pre-checkout");
       setTimeout(() => {
         axios
           .get(
-            "https://mintdoctor.ir/process/v2/main/checkout.php?Authorization=" +
-              getState().quiz.token +
-              "&type=" +
-              getState().quiz.type +
-              "&code=" +
+            "https://mintdoctor.ir/process/v2/main/preCheckout.php?code=" +
               prevCode +
-              "&aid=" +
-              prevAid
+              "&Authorization=" +
+              getState().quiz.token
           )
           .then((res) => {
-            console.log("goNext-checkout", res);
+            console.log("goNext-preCheckout", res);
             const code = res.data.result.code;
             const result = res.data.result;
             const token = res.data.result.token;
@@ -294,6 +311,28 @@ export const goNext = (prevAid, prevCode) => {
             dispatch(goToCheckout());
           });
       }, 1000);
+      // setTimeout(() => {
+      //   axios
+      //     .get(
+      //       "https://mintdoctor.ir/process/v2/main/checkout.php?Authorization=" +
+      //         getState().quiz.token +
+      //         "&type=" +
+      //         getState().quiz.type +
+      //         "&code=" +
+      //         prevCode +
+      //         "&aid=" +
+      //         prevAid
+      //     )
+      //     .then((res) => {
+      //       console.log("goNext-checkout", res);
+      //       const code = res.data.result.code;
+      //       const result = res.data.result;
+      //       const token = res.data.result.token;
+      //       window.scrollTo(0, 0);
+      //       dispatch(saveFetchedData(code, result, token));
+      //       dispatch(goToCheckout());
+      //     });
+      // }, 1000);
     }
   };
 };
