@@ -33,7 +33,7 @@ const bmiContainer = (props) => {
                     animationIn="fadeInUp"
                     animationInDelay={2000}
                   >
-                    <span className={classes.SliderLabel}>You - 25.39</span>
+                    <span className={classes.SliderLabel}>{lineBar.Label}</span>
                     <svg
                       width="11"
                       height="6"
