@@ -27,4 +27,5 @@ export {
   selectFaq,
   saveCheckooutData,
   purchase,
+  preToCheckout,
 } from "./Checkout";

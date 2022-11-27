@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as actionTypes from "./actionTypes";
+import { goToCheckout2, saveFetchedData } from "./Quiz";
 
 export const choosePlan = (index) => {
   return {
@@ -25,6 +26,32 @@ export const sendPlanId = () => {
   return (dispatch) => {
     setTimeout(() => {
       dispatch(goToLogin());
+    }, 1000);
+  };
+};
+
+export const preToCheckout = () => {
+  return (dispatch, getState) => {
+    console.log("pre-checkout to checkout");
+    setTimeout(() => {
+      axios
+        .get(
+          "https://mintdoctor.ir/process/v2/main/checkout.php?Authorization=" +
+            getState().quiz.token +
+            "&type=" +
+            getState().quiz.type +
+            "&code=" +
+            getState().quiz.code
+        )
+        .then((res) => {
+          console.log("goNext-checkout", res);
+          const code = res.data.result.code;
+          const result = res.data.result;
+          const token = res.data.result.token;
+          window.scrollTo(0, 0);
+          dispatch(saveFetchedData(code, result, token));
+          dispatch(goToCheckout2());
+        });
     }, 1000);
   };
 };
@@ -69,18 +96,6 @@ export const purchase = () => {
             getState().checkout.discount
         )
         .then((res) => {
-          console.log(
-            "https://mintdoctor.ir/process/v2/login/request.php?code=" +
-              getState().quiz.code +
-              "&Authorization=" +
-              getState().quiz.token +
-              "&phoneNumber=" +
-              getState().checkout.phoneNumber +
-              "&plan=" +
-              planId +
-              "&discount=" +
-              getState().checkout.discount
-          );
           console.log("goNext-login", res);
           console.log(res.data.success);
 

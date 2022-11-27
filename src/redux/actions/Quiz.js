@@ -311,28 +311,6 @@ export const goNext = (prevAid, prevCode) => {
             dispatch(goToCheckout());
           });
       }, 1000);
-      // setTimeout(() => {
-      //   axios
-      //     .get(
-      //       "https://mintdoctor.ir/process/v2/main/checkout.php?Authorization=" +
-      //         getState().quiz.token +
-      //         "&type=" +
-      //         getState().quiz.type +
-      //         "&code=" +
-      //         prevCode +
-      //         "&aid=" +
-      //         prevAid
-      //     )
-      //     .then((res) => {
-      //       console.log("goNext-checkout", res);
-      //       const code = res.data.result.code;
-      //       const result = res.data.result;
-      //       const token = res.data.result.token;
-      //       window.scrollTo(0, 0);
-      //       dispatch(saveFetchedData(code, result, token));
-      //       dispatch(goToCheckout());
-      //     });
-      // }, 1000);
     }
   };
 };

@@ -71,7 +71,6 @@ class QuizPage extends Component {
             </div>
           </div>
         )}
-        {/* {this.props.isGenderSelected === false ? <Navigate to="/" /> : null} */}
         {this.props.checkout === true ? <Navigate to="/preCheckout" /> : null}
       </Auxiliary>
     );
@@ -79,7 +78,6 @@ class QuizPage extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  // isGenderSelected: state.genderSel.isAnswered,
   code: state.quiz.code,
   aid: state.quiz.aid,
   result: state.quiz.result,
