@@ -77,7 +77,7 @@
     position: absolute;
     top: -37px;
     left: 50%;
-    min-width: 89px;
+    min-width: 160px;
     padding: 4px 0;
     background: var(--neutral700Color);
     border-radius: 4px;

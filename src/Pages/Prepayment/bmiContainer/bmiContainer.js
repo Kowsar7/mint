@@ -27,13 +27,13 @@ const bmiContainer = (props) => {
               <div className={classes.ScaleContainer}>
                 <div
                   className={` ${classes.ScaleSlider} ${classes.ScaleSliderIsShown} `}
-                  style={{ left: "63.4766%" }}
+                  style={{ left: lineBar.value + "%" }}
                 >
                   <AnimatedOnScroll
                     animationIn="fadeInUp"
                     animationInDelay={2000}
                   >
-                    <span className={classes.SliderLabel}>{lineBar.Label}</span>
+                    <span className={classes.SliderLabel}>{lineBar.label}</span>
                     <svg
                       width="11"
                       height="6"
