@@ -27,7 +27,7 @@ const bmiContainer = (props) => {
               <div className={classes.ScaleContainer}>
                 <div
                   className={` ${classes.ScaleSlider} ${classes.ScaleSliderIsShown} `}
-                  style={{ left: lineBar.value + "%" }}
+                  style={{ right: lineBar.value + "%" }}
                 >
                   <AnimatedOnScroll
                     animationIn="fadeInUp"
@@ -49,7 +49,7 @@ const bmiContainer = (props) => {
                     </svg>
                   </AnimatedOnScroll>
                   <AnimatedOnScroll
-                    animationIn="fadeInLeftBig"
+                    animationIn="fadeInRightBig"
                     animationInDuration={2000}
                   >
                     <span className={classes.SliderDot}></span>
@@ -59,11 +59,7 @@ const bmiContainer = (props) => {
 
                 <span className={classes.MinimumScaleValue}>پایین</span>
                 <span className={classes.MinimumScaleValue}>متوسط</span>
-                <span
-                  className={` ${classes.MinimumScaleValue} ${classes.IsSelected} `}
-                >
-                  بالا
-                </span>
+                <span className={` ${classes.MinimumScaleValue}  `}>بالا</span>
                 <span className={classes.MinimumScaleValue}>
                   بالاترین حد ممکن
                 </span>
@@ -87,7 +83,10 @@ const bmiContainer = (props) => {
               </AnimatedOnScroll>
               <BmiListContainer items={props.summery.items} />
 
-              <div className={classes.NoteContainer}>
+              <div
+                className={classes.NoteContainer}
+                style={{ display: "none" }}
+              >
                 <p className={classes.NoteText}>
                   <b>Mesomorph:</b> Medium frame, more muscular{" "}
                 </p>

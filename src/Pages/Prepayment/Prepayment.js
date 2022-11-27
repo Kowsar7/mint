@@ -20,8 +20,8 @@ const PrePayment = (props) => {
           <div className={classes.SubContainer}>
             <h2 className={classes.Title}>{props.result.summery.title}</h2>
             <BmiContainer summery={props.result.summery} />
-            <h2 className={classes.Title}>Highlights of Your Plan</h2>
-            <Highlights />
+            <h2 className={classes.Title}>{props.result.highlight.title}</h2>
+            <Highlights highlight={props.result.highlight} />
             <SuccessPercent />
             <div className={classes.FixedToBottomBlock}>
               <button type="button" className={classes.Container}>

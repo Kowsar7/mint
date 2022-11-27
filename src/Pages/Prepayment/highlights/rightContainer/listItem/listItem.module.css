@@ -13,7 +13,7 @@
 
 .IconContainer {
     padding: 4px;
-    background: var(--exclusiveOfferLogoBackgroundColor);
+    /* background: var(--exclusiveOfferLogoBackgroundColor); */
     border-radius: 6px;
     margin-inline-end: 8px;
 }
@@ -36,4 +36,8 @@
     font-weight: 600;
     line-height: 1.33;
     word-break: break-word;
+}
+
+.Icon {
+    width: 25px;
 }

@@ -13,7 +13,7 @@
 
 .IconContainer {
     padding: 4px;
-    background: var(--exclusiveOfferLogoBackgroundColor);
+    /* background: var(--exclusiveOfferLogoBackgroundColor); */
     border-radius: 6px;
     margin-inline-end: 8px;
 }
