@@ -6,13 +6,21 @@ import BmiNote from "./bmiNote/bmiNote";
 import BmiListContainer from "./bmiListContainer/bmiListContainer";
 
 const bmiContainer = (props) => {
+  let lineBar = props.summery.lineBar;
   return (
     <AnimatedOnScroll animationIn="fadeInUp">
       <div className={classes.BmiContainer}>
         <div className={` ${classes.Container} ${classes.IsShown} `}>
           <div className={classes.SubContainer}>
+            <h4 className={classes.VideoTitle}>{props.summery.video.text}</h4>
+            <video
+              src={props.summery.video.link}
+              controls
+              controlsList="nodownload"
+              className={classes.Video}
+            />
             <div className={classes.LeftContainer}>
-              <div className={classes.HeaderRow}>
+              <div className={classes.HeaderRow} style={{ display: "none" }}>
                 <span className={classes.Header}>BMI</span>
                 <span className={classes.Label}>Normal - 21.5</span>
               </div>
@@ -60,7 +68,10 @@ const bmiContainer = (props) => {
                   بالاترین حد ممکن
                 </span>
               </div>
-              <BmiNote />
+              <BmiNote
+                warningDescription={lineBar.warningDescription}
+                warningTitle={lineBar.warningTitle}
+              />
             </div>
             <div className={classes.Divider}></div>
             <div className={`${classes.RightContainer} ${classes.IsListShown}`}>
@@ -69,13 +80,12 @@ const bmiContainer = (props) => {
                 animationInDuration={2000}
               >
                 <img
-                  src="https://res.cloudinary.com/drhg6wpcy/image/upload/dpr_1.0,fl_lossy,q_auto:eco/el3q8xfjj38lwdf6syss"
-                  srcSet="https://res.cloudinary.com/drhg6wpcy/image/upload/dpr_1.0,fl_lossy,q_auto:eco/el3q8xfjj38lwdf6syss 1x, https://res.cloudinary.com/drhg6wpcy/image/upload/dpr_2.0,fl_lossy,q_auto:eco/el3q8xfjj38lwdf6syss 2x"
+                  src={props.summery.borderImage}
                   alt=""
                   className={classes.Image}
                 />
               </AnimatedOnScroll>
-              <BmiListContainer />
+              <BmiListContainer items={props.summery.items} />
 
               <div className={classes.NoteContainer}>
                 <p className={classes.NoteText}>

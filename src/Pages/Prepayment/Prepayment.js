@@ -18,8 +18,8 @@ const PrePayment = (props) => {
           <Header />
           <Banner header={props.result.header} />
           <div className={classes.SubContainer}>
-            <h2 className={classes.Title}>Personal Summary</h2>
-            <BmiContainer />
+            <h2 className={classes.Title}>{props.result.summery.title}</h2>
+            <BmiContainer summery={props.result.summery} />
             <h2 className={classes.Title}>Highlights of Your Plan</h2>
             <Highlights />
             <SuccessPercent />

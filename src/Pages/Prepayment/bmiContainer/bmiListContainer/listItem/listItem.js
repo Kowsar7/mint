@@ -7,10 +7,15 @@ const item = (props) => {
   return (
     <AnimatedOnScroll animationIn="fadeInUp" animationInDuration={props.delay}>
       <li className={classes.Item}>
-        <div className={classes.IconContainer}>{props.svg}</div>
+        <div className={classes.IconContainer}>{props.icon}</div>
         <div>
           <h4 className={classes.ItemTitle}>{props.title}</h4>
-          <p className={classes.ItemText}>{props.text}</p>
+          <p
+            className={classes.ItemText}
+            style={{ color: props.descriptionColor }}
+          >
+            {props.text}
+          </p>
         </div>
       </li>
     </AnimatedOnScroll>

@@ -53,7 +53,6 @@
 }
 
 .ScaleContainer {
-    direction: ltr;
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -224,4 +223,16 @@ html[dir= 'rtl'] .NoteText:before {
 
 .NoteText b {
     font-weight: 600;
+}
+
+.Video {
+    width: 100%;
+    border-radius: 7px;
+    margin-bottom: 50px;
+}
+
+.VideoTitle {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 18px;
 }

@@ -26,11 +26,8 @@ const bmiNote = (props) => {
             </svg>
           </div>
           <div>
-            <h3 className={classes.Title}>Risks of unhealthy BMI:</h3>
-            <p className={classes.Text}>
-              High blood pressure, increased risk of heart attack, stroke, type
-              2 diabetes, chronic back and joint pain
-            </p>
+            <h3 className={classes.Title}>{props.warningTitle}:</h3>
+            <p className={classes.Text}>{props.warningDescription}</p>
           </div>
         </div>
       </div>
