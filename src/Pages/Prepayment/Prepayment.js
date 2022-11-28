@@ -48,7 +48,7 @@ const PrePayment = (props) => {
 const mapStateToProps = (state) => ({
   checkout: state.quiz.checkout,
   checkout2: state.quiz.checkout2,
-  result: state.quiz.result,
+  result: state.quiz.PreCheckoutResult,
 });
 
 const mapDispatchToProps = (dispatch) => ({

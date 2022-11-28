@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import withRouter from "../../hoc/withRouter/withRouter";
 
 import classes from "./Checkout.module.css";
 import Logo from "../../assets/images/logo.png";
@@ -32,15 +33,29 @@ class Checkout extends Component {
   };
 
   componentDidMount = () => {
+    console.log(this.props);
+    // this.props.router.setRouteLeaveHook(this.props.route, this.onLeave);
+    // if (window.history.state && window.history.state.idx > 0) {
+    //   this.props.router.navigate(-1);
+    // }
+    console.log(window);
+
     const handleScroll = () => {
       let position = window.pageYOffset;
       this.setState({ visible: position > 100 });
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   };
+
+  onLeave(nextState) {
+    if (nextState.action === "POP") {
+      console.log("pop");
+    }
+  }
 
   onModalHandler = (title, date, name, comment, image) => {
     this.setState((prevState) => ({
@@ -145,6 +160,7 @@ class Checkout extends Component {
                     className={classes.StickyPulsingButton}
                     data-button="countdown-button"
                     onClick={() => this.props.onButton()}
+                    // onClick={() => this.props.router.navigate("/")}
                   >
                     دریافت برنامه
                   </button>
@@ -194,7 +210,7 @@ class Checkout extends Component {
 
 const mapStateToProps = (state) => ({
   planSelectedIndex: state.checkout.planSelectedIndex,
-  result: state.quiz.result,
+  result: state.quiz.CheckoutResult,
   login: state.checkout.login,
 });
 
@@ -204,4 +220,7 @@ const mapDispatchToProps = (dispatch) => ({
   onButton: () => dispatch(actionCreators.sendPlanId()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Checkout));

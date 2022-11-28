@@ -14,11 +14,13 @@ import ProgressContainer from "./Quiz/progressContainer/progressContainer";
 
 class QuizPage extends Component {
   componentDidMount = () => {
-    const params = new URLSearchParams(window.location.search); // id=123
-    let type = params.get("type");
+    if (this.props.type === "") {
+      const params = new URLSearchParams(window.location.search); // id=123
+      let type = params.get("type");
 
-    this.props.onSaveType(type);
-    console.log(type);
+      this.props.onSaveType(type);
+      console.log(type);
+    }
 
     this.props.fetchData();
     window.scrollTo(0, 0);
@@ -78,11 +80,12 @@ class QuizPage extends Component {
 }
 
 const mapStateToProps = (state) => ({
+  type: state.quiz.type,
   code: state.quiz.code,
   aid: state.quiz.aid,
-  result: state.quiz.result,
-  questionType: state.quiz.result.questionType,
-  parasite: state.quiz.result.parasite,
+  result: state.quiz.QuizResult,
+  questionType: state.quiz.QuizResult.questionType,
+  parasite: state.quiz.QuizResult.parasite,
   checkout: state.quiz.checkout,
 });
 

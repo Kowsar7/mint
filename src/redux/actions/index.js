@@ -25,7 +25,7 @@ export {
   choosePlan,
   noDiscount,
   selectFaq,
-  saveCheckooutData,
+  saveCheckoutData,
   purchase,
   preToCheckout,
 } from "./Checkout";

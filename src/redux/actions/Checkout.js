@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as actionTypes from "./actionTypes";
-import { goToCheckout2, saveFetchedData } from "./Quiz";
+import { goToCheckout2, saveFetchedCheckoutData } from "./Quiz";
 
 export const choosePlan = (index) => {
   return {
@@ -36,7 +36,7 @@ export const preToCheckout = () => {
     setTimeout(() => {
       axios
         .get(
-          "https://mintdoctor.ir/process/v2/main/checkout.php?Authorization=" +
+          "https://mintdoctor.ir/process/v2/main/checkout.php?test=true&Authorization=" +
             getState().quiz.token +
             "&type=" +
             getState().quiz.type +
@@ -49,7 +49,7 @@ export const preToCheckout = () => {
           const result = res.data.result;
           const token = res.data.result.token;
           window.scrollTo(0, 0);
-          dispatch(saveFetchedData(code, result, token));
+          dispatch(saveFetchedCheckoutData(code, result, token));
           dispatch(goToCheckout2());
         });
     }, 1000);
@@ -62,10 +62,10 @@ export const goToLogin = () => {
   };
 };
 
-export const saveCheckooutData = (result) => {
+export const saveCheckoutData = (result) => {
   return {
-    type: actionTypes.SAVE_FETCHED_DATA,
-    result: result,
+    type: actionTypes.SAVE_FETCHED_PRECHECKOUT_DATA,
+    PreCheckoutResult: result,
   };
 };
 
@@ -78,13 +78,13 @@ export const onLoginInputChange = (value) => {
 
 export const purchase = () => {
   return (dispatch, getState) => {
-    let result = getState().quiz.result;
+    let result = getState().quiz.CheckoutResult;
     let planIndex = getState().checkout.planSelectedIndex;
     let planId = result.plans[planIndex].planId;
     setTimeout(() => {
       axios
         .get(
-          "https://mintdoctor.ir/process/v2/login/request.php?code=" +
+          "https://mintdoctor.ir/process/v2/login/request.php?test=true&code=" +
             getState().quiz.code +
             "&Authorization=" +
             getState().quiz.token +

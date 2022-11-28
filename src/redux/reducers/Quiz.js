@@ -20,7 +20,9 @@ const initialState = {
   },
   code: "",
   aid: "",
-  result: {},
+  QuizResult: {},
+  CheckoutResult: {},
+  PreCheckoutResult: {},
   inputError: false,
   token: "",
   type: "",
@@ -87,11 +89,25 @@ const quizReducer = (state = initialState, action) => {
                   : state.inputValue.weight_kg,
             },
           });
-    case actionTypes.SAVE_FETCHED_DATA:
+    case actionTypes.SAVE_FETCHED_QUIZ_DATA:
       return updateObject(state, {
         questionNum: state.questionNum + 1,
         code: action.code,
-        result: action.result,
+        QuizResult: action.result,
+        token: action.token,
+      });
+    case actionTypes.SAVE_FETCHED_CHECKOUT_DATA:
+      return updateObject(state, {
+        questionNum: state.questionNum + 1,
+        code: action.code,
+        CheckoutResult: action.result,
+        token: action.token,
+      });
+    case actionTypes.SAVE_FETCHED_PRECHECKOUT_DATA:
+      return updateObject(state, {
+        questionNum: state.questionNum + 1,
+        code: action.code,
+        PreCheckoutResult: action.result,
         token: action.token,
       });
     case actionTypes.NULL_ANSWER_INDEX:
@@ -113,7 +129,7 @@ const quizReducer = (state = initialState, action) => {
     case actionTypes.GO_NEXT:
       return updateObject(state, {
         code: action.code,
-        result: action.result,
+        QuizResult: action.result,
       });
     case actionTypes.SHOW_INPUT_ERROR:
       return updateObject(state, {

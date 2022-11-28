@@ -11,8 +11,8 @@ const input = (props) => {
         <div className={classes.Root}>
           <input
             className={classes.Input}
-            type="number"
-            inputMode="numeric"
+            // type="number"
+            // inputMode="numeric"
             value={props.value}
             onChange={(event) =>
               props.onInputChange(event.target.value, props.scale, props.HorW)

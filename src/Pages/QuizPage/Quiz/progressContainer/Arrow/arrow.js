@@ -29,7 +29,7 @@ const arrow = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  result: state.quiz.result,
+  result: state.quiz.QuizResult,
   code: state.quiz.code,
 });
 

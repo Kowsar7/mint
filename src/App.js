@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router";
+// import { LastLocationProvider } from "react-router-last-location";
 
 import "./App.css";
 // import GenderSelection from "./Pages/GenderSelectionPage/GenderSelection";
@@ -12,12 +13,12 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/mint/generated-questionary" element={<QuizPage />} />
+        {/* <LastLocationProvider> */}
         <Route path="/preCheckout" element={<PrePayment />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<QuizPage />} />
-        <Route path="*" element={<QuizPage />} />
+        <Route path="/" exact element={<QuizPage />} />
+        {/* </LastLocationProvider> */}
       </Routes>
     </div>
   );
