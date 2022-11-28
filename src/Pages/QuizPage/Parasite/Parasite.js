@@ -80,7 +80,7 @@ const Parasite = (props) => {
       );
       setTimeout(
         () => props.goNext(parasite.aid, props.code),
-        elements[i].inputs.texts.length * 6000
+        elements[i].inputs.texts.length * 4000
       );
     }
 

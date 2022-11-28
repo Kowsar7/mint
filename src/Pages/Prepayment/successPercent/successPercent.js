@@ -2,8 +2,10 @@ import React from "react";
 import { AnimatedOnScroll } from "react-animated-css-onscroll";
 
 import classes from "./successPercent.module.css";
+import Count from "./count/count";
+import Delayed from "../../../Components/TitleFade/Delayed/Delayed";
 
-const successPercent = (props) => {
+const SuccessPercent = (props) => {
   return (
     <AnimatedOnScroll animationIn="fadeInUp">
       <div className={classes.SuccessPercentContainer}>
@@ -24,8 +26,14 @@ const successPercent = (props) => {
             </svg>
           </button>
           <div>
-            <span className={classes.Percent}>{props.percentage.value}</span>
-            <span className={classes.PercentUnit}>%</span>
+            <AnimatedOnScroll animationIn="fadeIn">
+              <span className={classes.Percent}>
+                <Delayed waitBeforeShow={2000}>
+                  <Count number={props.percentage.value} duration={2} />
+                </Delayed>
+              </span>
+              {/* <span className={classes.PercentUnit}>%</span> */}
+            </AnimatedOnScroll>
           </div>
           <div className={classes.Text}>
             <div
@@ -38,4 +46,4 @@ const successPercent = (props) => {
   );
 };
 
-export default successPercent;
+export default SuccessPercent;

@@ -36,7 +36,7 @@ export const preToCheckout = () => {
     setTimeout(() => {
       axios
         .get(
-          "https://mintdoctor.ir/process/v2/main/checkout.php?test=true&Authorization=" +
+          "https://mintdoctor.ir/process/v2/main/checkout.php?Authorization=" +
             getState().quiz.token +
             "&type=" +
             getState().quiz.type +

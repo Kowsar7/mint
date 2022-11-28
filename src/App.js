@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router";
-// import { LastLocationProvider } from "react-router-last-location";
+import ReactGA from "react-ga";
 
 import "./App.css";
 // import GenderSelection from "./Pages/GenderSelectionPage/GenderSelection";
@@ -9,16 +9,17 @@ import Checkout from "./Pages/Checkout/Checkout";
 import PrePayment from "./Pages/Prepayment/Prepayment";
 import Login from "./Pages/Login/login";
 
+ReactGA.initialize("UA-200586481-1");
+ReactGA.pageview(window.location.pathname + window.location.search);
+
 function App() {
   return (
     <div className="App">
       <Routes>
-        {/* <LastLocationProvider> */}
         <Route path="/preCheckout" element={<PrePayment />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" exact element={<QuizPage />} />
-        {/* </LastLocationProvider> */}
       </Routes>
     </div>
   );

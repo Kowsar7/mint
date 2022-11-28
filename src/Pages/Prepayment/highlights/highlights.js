@@ -59,7 +59,7 @@ const highlights = (props) => {
                   </AnimatedOnScroll>
                   <AnimatedOnScroll
                     animationIn="fadeInRightBig"
-                    animationInDuration={2000}
+                    animationInDelay={2000}
                   >
                     <span className={classes.SliderDot}></span>
                   </AnimatedOnScroll>

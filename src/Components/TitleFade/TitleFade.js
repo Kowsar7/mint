@@ -10,7 +10,7 @@ const titleFade = (props) => {
   return (
     <ul className={classes.TitleFadeList}>
       {texts.map((text, index) => (
-        <Delayed key={text} waitBeforeShow={index * 6000}>
+        <Delayed key={text} waitBeforeShow={index * 4000}>
           <Fader text={text} />
         </Delayed>
       ))}

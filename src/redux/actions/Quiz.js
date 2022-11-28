@@ -224,10 +224,10 @@ export const goNext = (prevAid, prevCode) => {
             const result = res.data.result;
             const token = res.data.result.token;
             window.scrollTo(0, 0);
-            dispatch(saveFetchedCheckoutData(code, result, token));
+            dispatch(saveFetchedPreCheckoutData(code, result, token));
             dispatch(goToCheckout());
           });
-      }, 1000);
+      }, 500);
     }
   };
 };
