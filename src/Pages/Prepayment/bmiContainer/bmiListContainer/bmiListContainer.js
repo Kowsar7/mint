@@ -16,6 +16,7 @@ const bmiListContainer = (props) => {
               title={item.title}
               text={item.description}
               descriptionColor={item.descriptionColor}
+              icon={item.icon}
             />
           ))}
         </ul>

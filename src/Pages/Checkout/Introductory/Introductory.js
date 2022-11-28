@@ -5,7 +5,7 @@ import IntItem from "./intItem/intItem";
 
 const introductory = (props) => {
   return (
-    <div className={classes.ContentContainer}>
+    <div className={classes.ContentContainer} style={{ display: "none" }}>
       <div className={classes.CheckoutPlanBenefits}>
         <div className={classes.PicsListWithImageContainer}>
           <div>

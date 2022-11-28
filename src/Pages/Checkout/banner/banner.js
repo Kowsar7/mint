@@ -8,7 +8,7 @@ import * as actionCreators from "../../../redux/actions";
 const banner = (props) => {
   return (
     <Auxiliary>
-      <div className={classes.ContainerDesktop}>
+      <div className={classes.ContainerDesktop} style={{ display: "none" }}>
         <div className={classes.TopBanner}>
           <div className={classes.TopBannerColLeft}>
             <div className={classes.TopBannerText}>

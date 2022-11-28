@@ -157,7 +157,7 @@
     /* overflow: hidden; */
     width: 100%;
     /* max-width: 415px; */
-    height: 388px;
+    /* height: 388px; */
     justify-content: center;
     margin: 0 auto;
 }
@@ -165,13 +165,15 @@
 .ComparisonImageLeft {
     left: 0;
     z-index: 1;
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     width: 100%;
     transition: all 1s ease;
 }
 
 .ComparisonImageRight {
+    display: none;
+
     position: absolute;
     z-index: 0;
     bottom: 0;
