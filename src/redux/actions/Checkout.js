@@ -84,7 +84,7 @@ export const purchase = () => {
     setTimeout(() => {
       axios
         .get(
-          "https://mintdoctor.ir/process/v2/login/request.php?test=true&code=" +
+          "https://mintdoctor.ir/process/v2/login/request.php?code=" +
             getState().quiz.code +
             "&Authorization=" +
             getState().quiz.token +
