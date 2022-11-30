@@ -125,6 +125,8 @@ html[dir= 'rtl'] .LockIcon {
     text-decoration: none;
     text-transform: uppercase;
     transition: all .2s;
+
+    margin-bottom: 10px;
 }
 
 @media (max-width: 500px) {
