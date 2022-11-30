@@ -3,19 +3,32 @@ import { Routes, Route } from "react-router";
 
 import "./App.css";
 // import GenderSelection from "./Pages/GenderSelectionPage/GenderSelection";
-import QuizPage from "./Pages/QuizPage/QuizPage";
-import Checkout from "./Pages/Checkout/Checkout";
-import PrePayment from "./Pages/Prepayment/Prepayment";
-import Login from "./Pages/Login/login";
+import asyncComponent from "./hoc/asyncComponent/asyncComponent";
+
+const AsyncPreCheckout = asyncComponent(() => {
+  return import("./Pages/Prepayment/Prepayment");
+});
+
+const AsyncCheckout = asyncComponent(() => {
+  return import("./Pages/Checkout/Checkout");
+});
+
+const AsyncLogin = asyncComponent(() => {
+  return import("./Pages/Login/login");
+});
+
+const AsyncQuiz = asyncComponent(() => {
+  return import("./Pages/QuizPage/QuizPage");
+});
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/preCheckout" element={<PrePayment />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/signIn" element={<Login />} />
-        <Route path="/" exact element={<QuizPage />} />
+        <Route path="/preCheckout" element={<AsyncPreCheckout />} />
+        <Route path="/checkout" element={<AsyncCheckout />} />
+        <Route path="/signIn" element={<AsyncLogin />} />
+        <Route path="/" exact element={<AsyncQuiz />} />
       </Routes>
     </div>
   );

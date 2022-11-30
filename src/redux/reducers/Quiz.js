@@ -4,7 +4,6 @@ import { updateObject } from "../utility";
 const initialState = {
   answerIndex: null,
   answerIndexes: [null, null, null, null, null, null, null],
-  questionNum: 0,
   heightScale: "CM",
   weightScale: "KG",
   inputValue: {
@@ -47,12 +46,9 @@ const quizReducer = (state = initialState, action) => {
       });
     case actionTypes.CHANGE_QUESTION_PAGE:
       return updateObject(state, {
-        questionNum: state.questionNum + 1,
         answerIndex: null,
         answerIndexes: [null, null, null, null, null, null, null],
       });
-    case actionTypes.RETURN_TO_PREVIUS_QUESTION:
-      return updateObject(state, { questionNum: state.questionNum - 1 });
     case actionTypes.ON_SCALE_CHANGE:
       return updateObject(state, {
         heightScale: state.heightScale === "FT" ? "CM" : "FT",
@@ -92,21 +88,18 @@ const quizReducer = (state = initialState, action) => {
           });
     case actionTypes.SAVE_FETCHED_QUIZ_DATA:
       return updateObject(state, {
-        questionNum: state.questionNum + 1,
         code: action.code,
         QuizResult: action.result,
         token: action.token,
       });
     case actionTypes.SAVE_FETCHED_CHECKOUT_DATA:
       return updateObject(state, {
-        questionNum: state.questionNum + 1,
         code: action.code,
         CheckoutResult: action.result,
         token: action.token,
       });
     case actionTypes.SAVE_FETCHED_PRECHECKOUT_DATA:
       return updateObject(state, {
-        questionNum: state.questionNum + 1,
         code: action.code,
         PreCheckoutResult: action.result,
         token: action.token,

@@ -34,13 +34,6 @@ class Checkout extends Component {
   };
 
   componentDidMount = () => {
-    console.log(this.props);
-    // this.props.router.setRouteLeaveHook(this.props.route, this.onLeave);
-    // if (window.history.state && window.history.state.idx > 0) {
-    //   this.props.router.navigate(-1);
-    // }
-    console.log(window);
-
     const handleScroll = () => {
       let position = window.pageYOffset;
       this.setState({ visible: position > 100 });
@@ -51,12 +44,6 @@ class Checkout extends Component {
       window.removeEventListener("scroll", handleScroll);
     };
   };
-
-  onLeave(nextState) {
-    if (nextState.action === "POP") {
-      console.log("pop");
-    }
-  }
 
   onModalHandler = (title, date, name, comment, image) => {
     this.setState((prevState) => ({

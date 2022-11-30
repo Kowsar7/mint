@@ -8,7 +8,6 @@ const quizIndicator = (props) => {
 
   const progress = (currentQuestion / allQuestions).toPrecision(3) * 100 + "%";
 
-  console.log(allQuestions, currentQuestion, progress);
   return (
     <div className={classes.Container}>
       <div className={classes.Bar}>

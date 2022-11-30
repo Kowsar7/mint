@@ -256,7 +256,6 @@ export const goNext = (prevAid, prevCode) => {
               const code = res.data.result.code;
               const result = res.data.result;
               const token = res.data.result.token;
-              window.scrollTo(0, 0);
               dispatch(loadingFalse());
               dispatch(saveFetchedCheckoutData(code, result, token));
               dispatch(goToCheckout2());
@@ -411,7 +410,6 @@ export const clickedonQuizCard = (index, prevAid, prevCode) => {
               const code = res.data.result.code;
               const result = res.data.result;
               const token = res.data.result.token;
-              window.scrollTo(0, 0);
               dispatch(loadingFalse());
               dispatch(saveFetchedCheckoutData(code, result, token));
               dispatch(goToCheckout2());

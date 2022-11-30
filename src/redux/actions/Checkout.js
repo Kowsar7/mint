@@ -101,7 +101,6 @@ export const purchase = () => {
         .then((res) => {
           dispatch(actionCreators.loadingFalse);
           console.log("goNext-login", res);
-          console.log(res.data.success);
 
           if (res.data.success === "true") {
             window.location = res.data.result.resultLink;
