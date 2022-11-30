@@ -7,7 +7,7 @@ const commonContainer = (props) => {
     <div className={classes.Container}>
       <div className={classes.PersonalizationItem}>
         <img
-          src="https://mintdoctor.ir/files/v2/wyg/target.png"
+          src="https://mint-family.com/api/files/v2/wyg/target.png"
           alt=""
           className={classes.Icon}
         />
@@ -19,7 +19,7 @@ const commonContainer = (props) => {
       <div className={classes.Separator}></div>
       <div className={classes.PersonalizationItem}>
         <img
-          src="https://mintdoctor.ir/files/v2/wyg/regime.png"
+          src="https://mint-family.com/api/files/v2/wyg/regime.png"
           alt=""
           className={classes.Icon}
         />

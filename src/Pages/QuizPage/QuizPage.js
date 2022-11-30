@@ -8,14 +8,12 @@ import classes from "./QuizPage.module.css";
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import Quiz from "./Quiz/Quiz";
 import Parasite from "./Parasite/Parasite";
-// import LinearProgressbar from "../../Components/Progressbar/linear/linearProgressbar";
-// import CircularStatic from "../../Components/Progressbar/circular/circularProgressbar";
 import ProgressContainer from "./Quiz/progressContainer/progressContainer";
 
 class QuizPage extends Component {
   componentDidMount = () => {
     if (this.props.type === "") {
-      const params = new URLSearchParams(window.location.search); // id=123
+      const params = new URLSearchParams(window.location.search);
       let type = params.get("type");
 
       this.props.onSaveType(type);
@@ -46,7 +44,11 @@ class QuizPage extends Component {
             }}
           >
             <ProgressContainer result={this.props.result} currentProgress />
-            <Parasite result={this.props.result} goNext={this.props.goNext} />
+            <Parasite
+              result={this.props.result}
+              goNext={this.props.goNext}
+              loading={this.props.loading}
+            />
           </div>
         ) : (
           <div className={classes.Container}>
@@ -64,7 +66,7 @@ class QuizPage extends Component {
               />
             </div>
             <div className={classes.ContentContainer}>
-              <Quiz result={this.props.result} />
+              <Quiz result={this.props.result} loading={this.props.loading} />
               <img
                 className={classes.RightImage}
                 src={this.props.result.borderImage}
@@ -87,6 +89,7 @@ const mapStateToProps = (state) => ({
   questionType: state.quiz.QuizResult.questionType,
   parasite: state.quiz.QuizResult.parasite,
   checkout: state.quiz.checkout,
+  loading: state.quiz.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

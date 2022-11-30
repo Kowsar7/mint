@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from "../axiosInstance";
 import * as actionTypes from "./actionTypes";
-import { goToCheckout2, saveFetchedCheckoutData } from "./Quiz";
+import * as actionCreators from "./index";
 
 export const choosePlan = (index) => {
   return {
@@ -32,11 +32,12 @@ export const sendPlanId = () => {
 
 export const preToCheckout = () => {
   return (dispatch, getState) => {
+    dispatch(actionCreators.loadingTrue());
     console.log("pre-checkout to checkout");
     setTimeout(() => {
       axios
         .get(
-          "https://mintdoctor.ir/process/v2/main/checkout.php?Authorization=" +
+          "/main/checkout.php?Authorization=" +
             getState().quiz.token +
             "&type=" +
             getState().quiz.type +
@@ -49,8 +50,9 @@ export const preToCheckout = () => {
           const result = res.data.result;
           const token = res.data.result.token;
           window.scrollTo(0, 0);
-          dispatch(saveFetchedCheckoutData(code, result, token));
-          dispatch(goToCheckout2());
+          dispatch(actionCreators.loadingFalse);
+          dispatch(actionCreators.saveFetchedCheckoutData(code, result, token));
+          dispatch(actionCreators.goToCheckout2());
         });
     }, 1000);
   };
@@ -78,13 +80,14 @@ export const onLoginInputChange = (value) => {
 
 export const purchase = () => {
   return (dispatch, getState) => {
+    dispatch(actionCreators.loadingTrue());
     let result = getState().quiz.CheckoutResult;
     let planIndex = getState().checkout.planSelectedIndex;
     let planId = result.plans[planIndex].planId;
     setTimeout(() => {
       axios
         .get(
-          "https://mintdoctor.ir/process/v2/login/request.php?code=" +
+          "/login/request.php?code=" +
             getState().quiz.code +
             "&Authorization=" +
             getState().quiz.token +
@@ -96,6 +99,7 @@ export const purchase = () => {
             getState().checkout.discount
         )
         .then((res) => {
+          dispatch(actionCreators.loadingFalse);
           console.log("goNext-login", res);
           console.log(res.data.success);
 

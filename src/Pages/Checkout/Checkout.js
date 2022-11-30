@@ -15,6 +15,7 @@ import Exercises from "./exercises/exercises";
 import FeedbacksSection from "./feedbacksSection/feedbacksSection";
 import LegalSection from "./legalSection/legalSection";
 import Modal from "./Modal/modal";
+import Spinner from "../../Components/UI/Spinner/Spinner";
 import * as actionTypes from "../../redux/actions/actionTypes";
 import * as actionCreators from "../../redux/actions";
 import { Navigate } from "react-router";
@@ -202,7 +203,8 @@ class Checkout extends Component {
             clicked={this.onModalHandler}
           />
         ) : null}
-        {this.props.login === true ? <Navigate to="/login" /> : null}
+        {this.props.login === true ? <Navigate to="/signIn" /> : null}
+        {this.props.loading === true ? <Spinner /> : null}
       </div>
     );
   }
@@ -212,6 +214,7 @@ const mapStateToProps = (state) => ({
   planSelectedIndex: state.checkout.planSelectedIndex,
   result: state.quiz.CheckoutResult,
   login: state.checkout.login,
+  loading: state.quiz.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

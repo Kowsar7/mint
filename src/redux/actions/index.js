@@ -17,6 +17,12 @@ export {
   sendInput,
   saveType,
   goToCheckout,
+  goToCheckout2,
+  saveFetchedQuizData,
+  saveFetchedCheckoutData,
+  saveFetchedPreCheckoutData,
+  loadingTrue,
+  loadingFalse,
 } from "./Quiz";
 
 export {

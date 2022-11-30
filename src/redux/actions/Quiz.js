@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../axiosInstance";
 
 import * as actionTypes from "./actionTypes";
 import * as actionCreators from "./index";
@@ -123,20 +123,30 @@ export const saveFetchedCheckoutData = (code, result, token) => {
   };
 };
 
+export const loadingTrue = () => {
+  return {
+    type: actionTypes.LOADING_TRUE,
+  };
+};
+
+export const loadingFalse = () => {
+  return {
+    type: actionTypes.LOADING_FALSE,
+  };
+};
+
 export const fetchData = () => {
   return (dispatch, getState) => {
+    dispatch(loadingTrue());
     axios
-      .get(
-        "https://mintdoctor.ir/process/v2/main/question.php?type=" +
-          getState().quiz.type +
-          "&aid=start"
-      )
+      .get("/main/question.php?type=" + getState().quiz.type + "&aid=start")
       .then((res) => {
         console.log("fetchData", res);
         const code = res.data.result.code;
         const result = res.data.result;
         const token = res.data.result.token;
         window.scrollTo(0, 0);
+        dispatch(loadingFalse());
         dispatch(saveFetchedQuizData(code, result, token));
       });
   };
@@ -152,15 +162,14 @@ export const clickedonNextButton = (prevCode, answerIndexes) => {
   });
 
   return (dispatch, getState) => {
+    dispatch(loadingTrue());
     if (aids === "") {
       aids = getState().quiz.QuizResult.answers[0].aid;
     }
-    console.log(aids);
-    console.log(getState());
     setTimeout(() => {
       axios
         .get(
-          "https://mintdoctor.ir/process/v2/main/question.php?Authorization=" +
+          "/main/question.php?Authorization=" +
             getState().quiz.token +
             "&type=" +
             getState().quiz.type +
@@ -175,6 +184,7 @@ export const clickedonNextButton = (prevCode, answerIndexes) => {
           const result = res.data.result;
           const token = res.data.result.token;
           window.scrollTo(0, 0);
+          dispatch(loadingFalse());
           dispatch(saveFetchedQuizData(code, result, token));
           dispatch(nullAnswerIndex());
         });
@@ -184,13 +194,14 @@ export const clickedonNextButton = (prevCode, answerIndexes) => {
 
 export const goNext = (prevAid, prevCode) => {
   return (dispatch, getState) => {
+    dispatch(loadingTrue());
     if (getState().quiz.QuizResult.isResult === "false") {
       prevAid === "main"
         ? setTimeout(() => dispatch(actionCreators.returnToFirstPage()), 1000)
         : setTimeout(() => {
             axios
               .get(
-                "https://mintdoctor.ir/process/v2/main/question.php?Authorization=" +
+                "/main/question.php?Authorization=" +
                   getState().quiz.token +
                   "&type=" +
                   getState().quiz.type +
@@ -205,15 +216,16 @@ export const goNext = (prevAid, prevCode) => {
                 const result = res.data.result;
                 const token = res.data.result.token;
                 window.scrollTo(0, 0);
+                dispatch(loadingFalse());
                 dispatch(saveFetchedQuizData(code, result, token));
               });
           }, 1000);
     } else {
-      console.log("pre-checkout");
+      dispatch(loadingTrue());
       setTimeout(() => {
         axios
           .get(
-            "https://mintdoctor.ir/process/v2/main/preCheckout.php?code=" +
+            "/main/preCheckout.php?code=" +
               prevCode +
               "&Authorization=" +
               getState().quiz.token
@@ -224,7 +236,12 @@ export const goNext = (prevAid, prevCode) => {
             const result = res.data.result;
             const token = res.data.result.token;
             window.scrollTo(0, 0);
-            dispatch(saveFetchedPreCheckoutData(code, result, token));
+            dispatch(loadingFalse());
+            if (result.nextPage === "preCheckout") {
+              dispatch(saveFetchedPreCheckoutData(code, result, token));
+            } else if (result.nextPage === "checkout") {
+              dispatch(saveFetchedCheckoutData(code, result, token));
+            }
             dispatch(goToCheckout());
           });
       }, 1000);
@@ -234,6 +251,7 @@ export const goNext = (prevAid, prevCode) => {
 
 export const sendInput = (prevAid, prevCode, name) => {
   return (dispatch, getState) => {
+    dispatch(loadingTrue());
     let value;
     switch (name) {
       case "height_cm":
@@ -283,7 +301,7 @@ export const sendInput = (prevAid, prevCode, name) => {
       setTimeout(() => {
         axios
           .get(
-            "https://mintdoctor.ir/process/v2/main/question.php?Authorization=" +
+            "/main/question.php?Authorization=" +
               getState().quiz.token +
               "&type=" +
               getState().quiz.type +
@@ -302,6 +320,7 @@ export const sendInput = (prevAid, prevCode, name) => {
             const result = res.data.result;
             const token = res.data.result.token;
             window.scrollTo(0, 0);
+            dispatch(loadingFalse());
             dispatch(saveFetchedQuizData(code, result, token));
             dispatch(nullAnswerIndex());
           });
@@ -312,12 +331,13 @@ export const sendInput = (prevAid, prevCode, name) => {
 
 export const clickedonQuizCard = (index, prevAid, prevCode) => {
   return (dispatch, getState) => {
+    dispatch(loadingTrue());
     dispatch(answerQuestion(index));
     if (getState().quiz.QuizResult.isResult === "false") {
       setTimeout(() => {
         axios
           .get(
-            "https://mintdoctor.ir/process/v2/main/question.php?Authorization=" +
+            "/main/question.php?Authorization=" +
               getState().quiz.token +
               "&type=" +
               getState().quiz.type +
@@ -332,6 +352,7 @@ export const clickedonQuizCard = (index, prevAid, prevCode) => {
             const result = res.data.result;
             const token = res.data.result.token;
             window.scrollTo(0, 0);
+            dispatch(loadingFalse());
             dispatch(saveFetchedQuizData(code, result, token));
             dispatch(nullAnswerIndex());
           });
@@ -340,7 +361,7 @@ export const clickedonQuizCard = (index, prevAid, prevCode) => {
       setTimeout(() => {
         axios
           .get(
-            "https://mintdoctor.ir/process/v2/main/preCheckout.php?code=" +
+            "/main/preCheckout.php?code=" +
               prevCode +
               "&Authorization=" +
               getState().quiz.token
@@ -351,6 +372,7 @@ export const clickedonQuizCard = (index, prevAid, prevCode) => {
             const code = res.data.result.code;
             const token = res.data.result.token;
             window.scrollTo(0, 0);
+            dispatch(loadingFalse());
             dispatch(saveFetchedPreCheckoutData(code, result, token));
             dispatch(goToCheckout());
           });

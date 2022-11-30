@@ -11,6 +11,7 @@ import Image from "./imagee/image";
 import Video from "./videoo/video";
 import TransitionText from "./transitionText/transitionText";
 import Icon from "./iconn/icon";
+import Spinner from "../../../Components/UI/Spinner/Spinner";
 import { connect } from "react-redux";
 
 const Parasite = (props) => {
@@ -110,7 +111,11 @@ const Parasite = (props) => {
     }
   }
 
-  return <div className={classes.ParasiteContainer}>{el}</div>;
+  return props.loading === true ? (
+    <Spinner />
+  ) : (
+    <div className={classes.ParasiteContainer}>{el}</div>
+  );
 };
 
 const mapStateToProps = (state) => ({

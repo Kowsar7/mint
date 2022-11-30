@@ -9,6 +9,7 @@ import Banner from "./banner/banner";
 import BmiContainer from "./bmiContainer/bmiContainer";
 import Highlights from "./highlights/highlights";
 import SuccessPercent from "./successPercent/successPercent";
+import Spinner from "../../Components/UI/Spinner/Spinner";
 import * as actionCreators from "../../redux/actions";
 
 const PrePayment = (props) => {
@@ -41,6 +42,7 @@ const PrePayment = (props) => {
         </div>
       ) : null}
       {props.checkout2 === true ? <Navigate to="/checkout" /> : null}
+      {props.loading === true ? <Spinner /> : null}
     </Auxiliary>
   );
 };
@@ -49,6 +51,7 @@ const mapStateToProps = (state) => ({
   checkout: state.quiz.checkout,
   checkout2: state.quiz.checkout2,
   result: state.quiz.PreCheckoutResult,
+  loading: state.quiz.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

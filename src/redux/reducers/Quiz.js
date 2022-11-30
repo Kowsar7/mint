@@ -28,6 +28,7 @@ const initialState = {
   type: "",
   checkout: false,
   checkout2: false,
+  loading: false,
 };
 
 const quizReducer = (state = initialState, action) => {
@@ -145,6 +146,10 @@ const quizReducer = (state = initialState, action) => {
       return updateObject(state, { checkout: true });
     case actionTypes.GO_TO_CHECKOUT2:
       return updateObject(state, { checkout2: true, checkout: false });
+    case actionTypes.LOADING_TRUE:
+      return updateObject(state, { loading: true });
+    case actionTypes.LOADING_FALSE:
+      return updateObject(state, { loading: false });
     default:
       return state;
   }
