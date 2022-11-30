@@ -1,5 +1,7 @@
 .ParasiteContainer {
     margin: 0 auto;
+    height: calc(100vh - 150px);
+    overflow: scroll;
 }
 
 .TitleFadeContainer {
