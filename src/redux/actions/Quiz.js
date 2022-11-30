@@ -237,12 +237,13 @@ export const goNext = (prevAid, prevCode) => {
             const token = res.data.result.token;
             window.scrollTo(0, 0);
             dispatch(loadingFalse());
-            if (result.nextPage === "preCheckout") {
+            if (getState().quiz.QuizResult.nextPage === "preCheckout") {
               dispatch(saveFetchedPreCheckoutData(code, result, token));
-            } else if (result.nextPage === "checkout") {
+              dispatch(goToCheckout());
+            } else if (getState().quiz.QuizResult.nextPage === "checkout") {
               dispatch(saveFetchedCheckoutData(code, result, token));
+              dispatch(goToCheckout2());
             }
-            dispatch(goToCheckout());
           });
       }, 1000);
     }
@@ -373,8 +374,13 @@ export const clickedonQuizCard = (index, prevAid, prevCode) => {
             const token = res.data.result.token;
             window.scrollTo(0, 0);
             dispatch(loadingFalse());
-            dispatch(saveFetchedPreCheckoutData(code, result, token));
-            dispatch(goToCheckout());
+            if (getState().quiz.QuizResult.nextPage === "preCheckout") {
+              dispatch(saveFetchedPreCheckoutData(code, result, token));
+              dispatch(goToCheckout());
+            } else if (getState().quiz.QuizResult.nextPage === "checkout") {
+              dispatch(saveFetchedCheckoutData(code, result, token));
+              dispatch(goToCheckout2());
+            }
           });
       }, 1000);
     }
