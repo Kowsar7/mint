@@ -76,6 +76,7 @@ class QuizPage extends Component {
           </div>
         )}
         {this.props.checkout === true ? <Navigate to="/preCheckout" /> : null}
+        {this.props.checkout2 === true ? <Navigate to="/checkout" /> : null}
       </Auxiliary>
     );
   }
@@ -89,6 +90,7 @@ const mapStateToProps = (state) => ({
   questionType: state.quiz.QuizResult.questionType,
   parasite: state.quiz.QuizResult.parasite,
   checkout: state.quiz.checkout,
+  checkout2: state.quiz.checkout2,
   loading: state.quiz.loading,
 });
 

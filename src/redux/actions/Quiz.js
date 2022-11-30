@@ -221,31 +221,48 @@ export const goNext = (prevAid, prevCode) => {
               });
           }, 1000);
     } else {
-      dispatch(loadingTrue());
-      setTimeout(() => {
-        axios
-          .get(
-            "/main/preCheckout.php?code=" +
-              prevCode +
-              "&Authorization=" +
-              getState().quiz.token
-          )
-          .then((res) => {
-            console.log("goNext-preCheckout", res);
-            const code = res.data.result.code;
-            const result = res.data.result;
-            const token = res.data.result.token;
-            window.scrollTo(0, 0);
-            dispatch(loadingFalse());
-            if (getState().quiz.QuizResult.nextPage === "preCheckout") {
+      if (getState().quiz.QuizResult.nextPage === "preCheckout") {
+        setTimeout(() => {
+          axios
+            .get(
+              "/main/preCheckout.php?code=" +
+                prevCode +
+                "&Authorization=" +
+                getState().quiz.token
+            )
+            .then((res) => {
+              console.log("goNext-preCheckout", res);
+              const code = res.data.result.code;
+              const result = res.data.result;
+              const token = res.data.result.token;
+              dispatch(loadingFalse());
               dispatch(saveFetchedPreCheckoutData(code, result, token));
               dispatch(goToCheckout());
-            } else if (getState().quiz.QuizResult.nextPage === "checkout") {
+            });
+        }, 1000);
+      } else if (getState().quiz.QuizResult.nextPage === "checkout") {
+        setTimeout(() => {
+          axios
+            .get(
+              "/main/checkout.php?Authorization=" +
+                getState().quiz.token +
+                "&type=" +
+                getState().quiz.type +
+                "&code=" +
+                getState().quiz.code
+            )
+            .then((res) => {
+              console.log("goNext-checkout", res);
+              const code = res.data.result.code;
+              const result = res.data.result;
+              const token = res.data.result.token;
+              window.scrollTo(0, 0);
+              dispatch(loadingFalse());
               dispatch(saveFetchedCheckoutData(code, result, token));
               dispatch(goToCheckout2());
-            }
-          });
-      }, 1000);
+            });
+        }, 1000);
+      }
     }
   };
 };
@@ -359,30 +376,48 @@ export const clickedonQuizCard = (index, prevAid, prevCode) => {
           });
       }, 1000);
     } else {
-      setTimeout(() => {
-        axios
-          .get(
-            "/main/preCheckout.php?code=" +
-              prevCode +
-              "&Authorization=" +
-              getState().quiz.token
-          )
-          .then((res) => {
-            console.log("goNext-preCheckout", res);
-            const result = res.data.result;
-            const code = res.data.result.code;
-            const token = res.data.result.token;
-            window.scrollTo(0, 0);
-            dispatch(loadingFalse());
-            if (getState().quiz.QuizResult.nextPage === "preCheckout") {
+      if (getState().quiz.QuizResult.nextPage === "preCheckout") {
+        setTimeout(() => {
+          axios
+            .get(
+              "/main/preCheckout.php?code=" +
+                prevCode +
+                "&Authorization=" +
+                getState().quiz.token
+            )
+            .then((res) => {
+              console.log("goNext-preCheckout", res);
+              const code = res.data.result.code;
+              const result = res.data.result;
+              const token = res.data.result.token;
+              dispatch(loadingFalse());
               dispatch(saveFetchedPreCheckoutData(code, result, token));
               dispatch(goToCheckout());
-            } else if (getState().quiz.QuizResult.nextPage === "checkout") {
+            });
+        }, 1000);
+      } else if (getState().quiz.QuizResult.nextPage === "checkout") {
+        setTimeout(() => {
+          axios
+            .get(
+              "/main/checkout.php?Authorization=" +
+                getState().quiz.token +
+                "&type=" +
+                getState().quiz.type +
+                "&code=" +
+                getState().quiz.code
+            )
+            .then((res) => {
+              console.log("goNext-checkout", res);
+              const code = res.data.result.code;
+              const result = res.data.result;
+              const token = res.data.result.token;
+              window.scrollTo(0, 0);
+              dispatch(loadingFalse());
               dispatch(saveFetchedCheckoutData(code, result, token));
               dispatch(goToCheckout2());
-            }
-          });
-      }, 1000);
+            });
+        }, 1000);
+      }
     }
   };
 };

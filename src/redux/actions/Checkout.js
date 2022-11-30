@@ -50,7 +50,7 @@ export const preToCheckout = () => {
           const result = res.data.result;
           const token = res.data.result.token;
           window.scrollTo(0, 0);
-          dispatch(actionCreators.loadingFalse);
+          dispatch(actionCreators.loadingFalse());
           dispatch(actionCreators.saveFetchedCheckoutData(code, result, token));
           dispatch(actionCreators.goToCheckout2());
         });
