@@ -8,6 +8,10 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 
+import ReactGA from "react-ga";
+const TRACKING_ID = "UA-199356443-1";
+ReactGA.initialize(TRACKING_ID);
+
 let lang = "fa";
 
 if (lang === "fa") {

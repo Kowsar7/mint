@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router";
+import ReactGA from "react-ga";
 
 import "./App.css";
 // import GenderSelection from "./Pages/GenderSelectionPage/GenderSelection";
@@ -22,6 +23,10 @@ const AsyncQuiz = asyncComponent(() => {
 });
 
 function App() {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   return (
     <div className="App">
       <Routes>
