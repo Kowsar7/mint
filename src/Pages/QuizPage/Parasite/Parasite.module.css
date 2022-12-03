@@ -1,7 +1,6 @@
 .ParasiteContainer {
     margin: 0 auto;
-    height: calc(100vh - 150px);
-    overflow: scroll;
+    padding-bottom: 80px;
 }
 
 .TitleFadeContainer {
@@ -31,10 +30,4 @@
     margin: 25px;
     display: flex;
     flex-direction: column;
-}
-
-@media (max-width: 500px) {
-    .ParasiteContainer {
-        margin: 0 auto;
-    }
 }

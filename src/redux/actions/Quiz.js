@@ -182,7 +182,8 @@ export const fetchCheckoutData = () => {
         dispatch(loadingFalse());
         dispatch(saveFetchedCheckoutData(code, result, token));
         dispatch(goToCheckout2());
-      });
+      })
+      .catch((error) => console.log(error));
   };
 };
 
@@ -221,7 +222,8 @@ export const clickedonNextButton = (prevCode, answerIndexes) => {
           dispatch(loadingFalse());
           dispatch(saveFetchedQuizData(code, result, token));
           dispatch(nullAnswerIndex());
-        });
+        })
+        .catch((error) => console.log(error));
     }, 1000);
   };
 };
@@ -252,7 +254,8 @@ export const goNext = (prevAid, prevCode) => {
                 window.scrollTo(0, 0);
                 dispatch(loadingFalse());
                 dispatch(saveFetchedQuizData(code, result, token));
-              });
+              })
+              .catch((error) => console.log(error));
           }, 1000);
     } else {
       if (getState().quiz.QuizResult.nextPage === "preCheckout") {
@@ -272,7 +275,8 @@ export const goNext = (prevAid, prevCode) => {
               dispatch(loadingFalse());
               dispatch(saveFetchedPreCheckoutData(code, result, token));
               dispatch(goToCheckout());
-            });
+            })
+            .catch((error) => console.log(error));
         }, 1000);
       } else if (getState().quiz.QuizResult.nextPage === "checkout") {
         setTimeout(() => {
@@ -293,7 +297,8 @@ export const goNext = (prevAid, prevCode) => {
               dispatch(loadingFalse());
               dispatch(saveFetchedCheckoutData(code, result, token));
               dispatch(goToCheckout2());
-            });
+            })
+            .catch((error) => console.log(error));
         }, 1000);
       }
     }
@@ -374,7 +379,8 @@ export const sendInput = (prevAid, prevCode, name) => {
             dispatch(loadingFalse());
             dispatch(saveFetchedQuizData(code, result, token));
             dispatch(nullAnswerIndex());
-          });
+          })
+          .catch((error) => console.log(error));
       }, 1000);
     }
   };
@@ -406,7 +412,8 @@ export const clickedonQuizCard = (index, prevAid, prevCode) => {
             dispatch(loadingFalse());
             dispatch(saveFetchedQuizData(code, result, token));
             dispatch(nullAnswerIndex());
-          });
+          })
+          .catch((error) => console.log(error));
       }, 1000);
     } else {
       if (getState().quiz.QuizResult.nextPage === "preCheckout") {
@@ -426,7 +433,8 @@ export const clickedonQuizCard = (index, prevAid, prevCode) => {
               dispatch(loadingFalse());
               dispatch(saveFetchedPreCheckoutData(code, result, token));
               dispatch(goToCheckout());
-            });
+            })
+            .catch((error) => console.log(error));
         }, 1000);
       } else if (getState().quiz.QuizResult.nextPage === "checkout") {
         setTimeout(() => {
@@ -447,7 +455,8 @@ export const clickedonQuizCard = (index, prevAid, prevCode) => {
               dispatch(loadingFalse());
               dispatch(saveFetchedCheckoutData(code, result, token));
               dispatch(goToCheckout2());
-            });
+            })
+            .catch((error) => console.log(error));
         }, 1000);
       }
     }
