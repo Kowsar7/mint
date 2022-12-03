@@ -137,9 +137,10 @@ export const loadingFalse = () => {
 
 export const fetchData = () => {
   return (dispatch, getState) => {
+    const type = getState().quiz.type;
     dispatch(loadingTrue());
     axios
-      .get("/main/question.php?type=" + getState().quiz.type + "&aid=start")
+      .get("/main/question.php?type=" + type + "&aid=start")
       .then((res) => {
         console.log("fetchData", res);
         const code = res.data.result.code;
@@ -148,6 +149,39 @@ export const fetchData = () => {
         window.scrollTo(0, 0);
         dispatch(loadingFalse());
         dispatch(saveFetchedQuizData(code, result, token));
+      })
+      .catch((error) => console.log(error));
+  };
+};
+
+export const fetchCheckoutData = () => {
+  return (dispatch, getState) => {
+    dispatch(loadingTrue());
+    axios
+      .get(
+        "/main/checkout.php?Authorization=" +
+          getState().quiz.token +
+          "&type=" +
+          getState().quiz.type +
+          "&code=" +
+          getState().quiz.code
+      )
+      .then((res) => {
+        console.log(
+          "/main/checkout.php?Authorization=" +
+            getState().quiz.token +
+            "&type=" +
+            getState().quiz.type +
+            "&code=" +
+            getState().quiz.code
+        );
+        console.log("checkout", res);
+        const code = res.data.result.code;
+        const result = res.data.result;
+        const token = res.data.result.token;
+        dispatch(loadingFalse());
+        dispatch(saveFetchedCheckoutData(code, result, token));
+        dispatch(goToCheckout2());
       });
   };
 };

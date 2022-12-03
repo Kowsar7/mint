@@ -18,7 +18,6 @@ export const SHOW_INPUT_ERROR = "SHOW_INPUT_ERROR";
 export const HIDE_INPUT_ERROR = "HIDE_INPUT_ERROR";
 export const GO_TO_CHECKOUT = "GO_TO_CHECKOUT";
 export const GO_TO_CHECKOUT2 = "GO_TO_CHECKOUT2";
-
 export const NULL_ANSWER_INDEX = "NULL_ANSWER_INDEX";
 
 export const CHOOSE_PLAN = "CHOOSE_PLAN";

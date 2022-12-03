@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import withRouter from "../../hoc/withRouter/withRouter";
 
 import classes from "./Checkout.module.css";
 import Logo from "../../assets/images/logo.png";
@@ -14,55 +13,36 @@ import MealPlan from "./mealPlan/mealPlan";
 import Exercises from "./exercises/exercises";
 import FeedbacksSection from "./feedbacksSection/feedbacksSection";
 import LegalSection from "./legalSection/legalSection";
-import Modal from "./Modal/modal";
 import Spinner from "../../Components/UI/Spinner/Spinner";
 import * as actionTypes from "../../redux/actions/actionTypes";
 import * as actionCreators from "../../redux/actions";
 import { Navigate } from "react-router";
 
-class Checkout extends Component {
-  state = {
-    modal: false,
-    modalName: "",
-    modalTitle: "",
-    modalDate: "",
-    modalComment: "",
-    modalImage: "",
+const Checkout = (props) => {
+  const [visible, setVisible] = useState(false);
+  const [date] = useState(Date.now());
 
-    visible: false,
-    date: Date.now(),
-  };
-
-  componentDidMount = () => {
+  useEffect(() => {
+    props.fetchCheckoutData();
     const handleScroll = () => {
       let position = window.pageYOffset;
-      this.setState({ visible: position > 100 });
+      setVisible(position > 100);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  };
-
-  onModalHandler = (title, date, name, comment, image) => {
-    this.setState((prevState) => ({
-      modal: !prevState.modal,
-      modalTitle: title,
-      modalDate: date,
-      modalName: name,
-      modalComment: comment,
-      modalImage: image,
-    }));
-  };
-
-  render() {
-    return (
-      <div
-        className={classes.PageContainer}
-        data-page="checkout-affiliates-introductory-3-subs"
-        id="page"
-      >
+    // eslint-disable-next-line
+  }, []);
+  console.log(props);
+  return (
+    <div
+      className={classes.PageContainer}
+      data-page="checkout-affiliates-introductory-3-subs"
+      id="page"
+    >
+      {props.result !== null ? (
         <main className={classes.Main}>
           <div className={classes.HeaderWithCountdownDesktop}>
             <header className={classes.headerwithcountdown}>
@@ -73,7 +53,7 @@ class Checkout extends Component {
                   </a>
                 </span>
               </div>
-              <Countdown date={this.state.date} />
+              <Countdown date={date} />
               <div className={classes.BurgerButton}>
                 <BurgerButton />
               </div>
@@ -93,7 +73,7 @@ class Checkout extends Component {
                 <span className={classes.Title}>
                   <div
                     dangerouslySetInnerHTML={{
-                      __html: this.props.result.title,
+                      __html: props.result.title,
                     }}
                   />
                   {/* Start{" "} */}
@@ -103,7 +83,7 @@ class Checkout extends Component {
                 <span className={classes.SubTitle}>
                   <div
                     dangerouslySetInnerHTML={{
-                      __html: this.props.result.description,
+                      __html: props.result.description,
                     }}
                   />
                   {/* <span>10,000,000</span> members of BetterMe family */}
@@ -116,7 +96,7 @@ class Checkout extends Component {
                 <div className={classes.CountdownText}>
                   اعتبار تخفیف تا:{" "}
                   <span className={classes.CountdownTimeUnit}>
-                    <CountdownComp date={this.state.date} />
+                    <CountdownComp date={date} />
                   </span>
                 </div>
               </div>
@@ -125,14 +105,14 @@ class Checkout extends Component {
             <div
               className={classes.StickyfixedCountdown}
               style={{
-                display: this.state.visible === true ? "block" : "none",
+                display: visible === true ? "block" : "none",
               }}
             >
               <div className={classes.StickyCountdownContainer}>
                 <div className={classes.StickyCountdownTime}>
                   <div className={classes.StickyCountdownTimeNumbers}>
                     <div className={classes.StickyText}>اعتبار تخفیف تا: </div>
-                    <CountdownComp date={this.state.date} />
+                    <CountdownComp date={date} />
                   </div>
                   {/* <div className={classes.StickyCountdownTimeUnits}>
                     <span className={classes.StickyCountdownTimeUnit}>
@@ -147,8 +127,8 @@ class Checkout extends Component {
                   <button
                     className={classes.StickyPulsingButton}
                     data-button="countdown-button"
-                    onClick={() => this.props.onButton()}
-                    // onClick={() => this.props.router.navigate("/")}
+                    onClick={() => props.onButton()}
+                    // onClick={() => props.router.navigate("/")}
                   >
                     دریافت برنامه
                   </button>
@@ -157,45 +137,32 @@ class Checkout extends Component {
             </div>
           </div>
           <div className={classes.Banner}>
-            <Banner imageLeft={this.props.result.bannerImage} />
+            <Banner imageLeft={props.result.bannerImage} />
           </div>
           <section className={classes.IntroductoryMainSection}>
-            <Introductory result={this.props.result} />
+            <Introductory result={props.result} />
             <Plans
-              result={this.props.result}
-              planSelectedIndex={this.props.planSelectedIndex}
-              clicked={this.props.choosePlan}
+              result={props.result}
+              planSelectedIndex={props.planSelectedIndex}
+              clicked={props.choosePlan}
             />
             <MealPlan />
             <Exercises />
           </section>
           <section className={classes.FeedbacksSection}>
-            <FeedbacksSection
-              openModal={this.onModalHandler}
-              comments={this.props.result.comments}
-            />
+            <FeedbacksSection comments={props.result.comments} />
           </section>
           <section className={classes.LegalSection}>
-            <LegalSection result={this.props.result} />
+            <LegalSection result={props.result} />
           </section>
         </main>
-        {/* sidebarBackdrop */}
-        {this.state.modal === true ? (
-          <Modal
-            name={this.state.modalName}
-            date={this.state.modalDate}
-            title={this.state.modalTitle}
-            text={this.state.modalComment}
-            image={this.state.modalImage}
-            clicked={this.onModalHandler}
-          />
-        ) : null}
-        {this.props.login === true ? <Navigate to="/signIn" /> : null}
-        {this.props.loading === true ? <Spinner /> : null}
-      </div>
-    );
-  }
-}
+      ) : null}
+
+      {props.login === true ? <Navigate to="/signIn" /> : null}
+      {props.loading === true ? <Spinner /> : null}
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => ({
   planSelectedIndex: state.checkout.planSelectedIndex,
@@ -208,9 +175,9 @@ const mapDispatchToProps = (dispatch) => ({
   choosePlan: (index) =>
     dispatch({ type: actionTypes.CHOOSE_PLAN, index: index }),
   onButton: () => dispatch(actionCreators.sendPlanId()),
+  fetchCheckoutData: () => dispatch(actionCreators.fetchCheckoutData()),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRouter(Checkout));
+export default React.memo(
+  connect(mapStateToProps, mapDispatchToProps)(Checkout)
+);

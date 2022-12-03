@@ -59,6 +59,7 @@ function LinearProgressbar(props) {
           prevProgress >= maxValue ? maxValue : prevProgress + 1
         );
       }, time);
+
       return () => {
         clearInterval(timer);
       };
@@ -67,11 +68,13 @@ function LinearProgressbar(props) {
     // eslint-disable-next-line
   }, []);
 
-  if (progress === maxValue) {
-    if (props.hasButton !== "true") {
-      props.goNext(props.aid, props.code);
+  React.useEffect(() => {
+    if (progress === maxValue) {
+      if (props.hasButton !== "true") {
+        props.goNext(props.aid, props.code);
+      }
     }
-  }
+  });
 
   const theme = createTheme({
     palette: {

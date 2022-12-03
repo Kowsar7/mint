@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 
 import { Navigate } from "react-router";
 import { connect } from "react-redux";
@@ -10,77 +10,68 @@ import Quiz from "./Quiz/Quiz";
 import Parasite from "./Parasite/Parasite";
 import ProgressContainer from "./Quiz/progressContainer/progressContainer";
 
-class QuizPage extends Component {
-  componentDidMount = () => {
-    if (this.props.type === "") {
+const QuizPage = (props) => {
+  useEffect(() => {
+    props.fetchData();
+    if (props.type === "") {
       const params = new URLSearchParams(window.location.search);
       let type = params.get("type");
 
-      this.props.onSaveType(type);
-      console.log(type);
+      props.onSaveType(type);
     }
+    return () => {
+      window.scrollTo(0, 0);
+    };
+    // eslint-disable-next-line
+  }, []);
 
-    this.props.fetchData();
-    window.scrollTo(0, 0);
-  };
-
-  state = {
-    checkout: false,
-  };
-
-  onCheckout = () => {
-    this.setState({ checkout: true });
-  };
-
-  render() {
-    return (
-      <Auxiliary>
-        {this.props.questionType === "parasite" ? (
+  return (
+    <Auxiliary>
+      {props.questionType === "parasite" ? (
+        <div
+          className={classes.ParContainer}
+          style={{
+            backgroundColor: props.parasite.bgColor,
+            color: props.parasite.textColor,
+          }}
+        >
+          <ProgressContainer result={props.result} currentProgress />
+          <Parasite
+            result={props.result}
+            goNext={props.goNext}
+            loading={props.loading}
+          />
+        </div>
+      ) : (
+        <div className={classes.Container}>
           <div
-            className={classes.ParContainer}
+            className={classes.ImageContainer}
             style={{
-              backgroundColor: this.props.parasite.bgColor,
-              color: this.props.parasite.textColor,
+              background:
+                "linear-gradient(rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.25))",
             }}
           >
-            <ProgressContainer result={this.props.result} currentProgress />
-            <Parasite
-              result={this.props.result}
-              goNext={this.props.goNext}
-              loading={this.props.loading}
+            <img
+              className={classes.LeftImage}
+              src={props.result.borderImage}
+              alt=""
             />
           </div>
-        ) : (
-          <div className={classes.Container}>
-            <div
-              className={classes.ImageContainer}
-              style={{
-                background:
-                  "linear-gradient(rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.25))",
-              }}
-            >
-              <img
-                className={classes.LeftImage}
-                src={this.props.result.borderImage}
-                alt=""
-              />
-            </div>
-            <div className={classes.ContentContainer}>
-              <Quiz result={this.props.result} loading={this.props.loading} />
-              <img
-                className={classes.RightImage}
-                src={this.props.result.borderImage}
-                alt=""
-              />
-            </div>
+          <div className={classes.ContentContainer}>
+            <Quiz result={props.result} loading={props.loading} />
+            <img
+              className={classes.RightImage}
+              src={props.result.borderImage}
+              alt=""
+            />
           </div>
-        )}
-        {this.props.checkout === true ? <Navigate to="/preCheckout" /> : null}
-        {this.props.checkout2 === true ? <Navigate to="/checkout" /> : null}
-      </Auxiliary>
-    );
-  }
-}
+        </div>
+      )}
+      {props.checkout === true ? <Navigate to="/preCheckout" /> : null}
+      {props.checkout2 === true ? <Navigate to="/checkout" /> : null}
+    </Auxiliary>
+  );
+};
 
 const mapStateToProps = (state) => ({
   type: state.quiz.type,
@@ -100,4 +91,6 @@ const mapDispatchToProps = (dispatch) => ({
   onSaveType: (linkType) => dispatch(actionCreators.saveType(linkType)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(QuizPage);
+export default React.memo(
+  connect(mapStateToProps, mapDispatchToProps)(QuizPage)
+);

@@ -23,6 +23,7 @@ export {
   saveFetchedPreCheckoutData,
   loadingTrue,
   loadingFalse,
+  fetchCheckoutData,
 } from "./Quiz";
 
 export {
