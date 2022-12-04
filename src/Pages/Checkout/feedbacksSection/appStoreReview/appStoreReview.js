@@ -2,10 +2,10 @@ import React from "react";
 
 import classes from "./appStoreReview.module.css";
 
-const appStoreReview = (props) => {
-  let starts = [];
+const AppStoreReview = (props) => {
+  let stars = [];
   for (var i = 0; i < props.rate; i++) {
-    starts.push(
+    stars.push(
       <img
         key={i}
         src="https://res.cloudinary.com/drhg6wpcy/image/upload/dpr_1.0,fl_lossy,q_auto:eco/Star_5start_cgispk"
@@ -28,7 +28,7 @@ const appStoreReview = (props) => {
           <div className={classes.DateandStars}>
             <span className={classes.Date}>{props.dateText}</span>
             <br />
-            <span className={classes.Starts}>{starts}</span>
+            <span className={classes.Starts}>{stars}</span>
           </div>
         </div>
 
@@ -62,4 +62,4 @@ const appStoreReview = (props) => {
   );
 };
 
-export default appStoreReview;
+export default AppStoreReview;

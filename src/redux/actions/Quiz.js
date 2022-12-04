@@ -140,7 +140,7 @@ export const fetchData = () => {
     const type = getState().quiz.type;
     dispatch(loadingTrue());
     axios
-      .get("question.php?test=true&type=" + type + "&aid=start")
+      .get("question.php?type=" + type + "&aid=start")
       .then((res) => {
         console.log("fetchData", res);
         const code = res.data.result.code;
@@ -150,7 +150,17 @@ export const fetchData = () => {
         dispatch(loadingFalse());
         dispatch(saveFetchedQuizData(code, result, token));
       })
-      .catch((error) => console.log(error));
+      .catch((err) => {
+        axios.get("question.php?type=" + type + "&aid=start").then((res) => {
+          console.log("fetchData", res);
+          const code = res.data.result.code;
+          const result = res.data.result;
+          const token = res.data.result.token;
+          window.scrollTo(0, 0);
+          dispatch(loadingFalse());
+          dispatch(saveFetchedQuizData(code, result, token));
+        });
+      });
   };
 };
 
@@ -175,7 +185,26 @@ export const fetchCheckoutData = () => {
         dispatch(saveFetchedCheckoutData(code, result, token));
         dispatch(goToCheckout2());
       })
-      .catch((error) => console.log(error));
+      .catch((error) =>
+        axios
+          .get(
+            "checkout.php?Authorization=" +
+              getState().quiz.token +
+              "&type=" +
+              getState().quiz.type +
+              "&code=" +
+              getState().quiz.code
+          )
+          .then((res) => {
+            console.log("checkout", res);
+            const code = res.data.result.code;
+            const result = res.data.result;
+            const token = res.data.result.token;
+            dispatch(loadingFalse());
+            dispatch(saveFetchedCheckoutData(code, result, token));
+            dispatch(goToCheckout2());
+          })
+      );
   };
 };
 
@@ -198,7 +227,24 @@ export const fetchPreCheckoutData = () => {
         dispatch(saveFetchedPreCheckoutData(code, result, token));
         dispatch(goToCheckout());
       })
-      .catch((error) => console.log(error));
+      .catch((error) =>
+        axios
+          .get(
+            "preCheckout.php?code=" +
+              getState().quiz.code +
+              "&Authorization=" +
+              getState().quiz.token
+          )
+          .then((res) => {
+            console.log("preCheckout", res);
+            const code = res.data.result.code;
+            const result = res.data.result;
+            const token = res.data.result.token;
+            dispatch(loadingFalse());
+            dispatch(saveFetchedPreCheckoutData(code, result, token));
+            dispatch(goToCheckout());
+          })
+      );
   };
 };
 
@@ -238,7 +284,18 @@ export const clickedonNextButton = (prevCode, answerIndexes) => {
           dispatch(saveFetchedQuizData(code, result, token));
           dispatch(nullAnswerIndex());
         })
-        .catch((error) => console.log(error));
+        .catch((error) =>
+          axios.get(
+            "question.php?Authorization=" +
+              getState().quiz.token +
+              "&type=" +
+              getState().quiz.type +
+              "&code=" +
+              prevCode +
+              "&aid=" +
+              aids
+          )
+        );
     }, 1000);
   };
 };
@@ -270,7 +327,18 @@ export const goNext = (prevAid, prevCode) => {
                 dispatch(loadingFalse());
                 dispatch(saveFetchedQuizData(code, result, token));
               })
-              .catch((error) => console.log(error));
+              .catch((error) =>
+                axios.get(
+                  "question.php?Authorization=" +
+                    getState().quiz.token +
+                    "&type=" +
+                    getState().quiz.type +
+                    "&code=" +
+                    prevCode +
+                    "&aid=" +
+                    prevAid
+                )
+              );
           }, 1000);
     } else {
       if (getState().quiz.QuizResult.nextPage === "preCheckout") {
@@ -357,7 +425,22 @@ export const sendInput = (prevAid, prevCode, name) => {
             dispatch(saveFetchedQuizData(code, result, token));
             dispatch(nullAnswerIndex());
           })
-          .catch((error) => console.log(error));
+          .catch((error) =>
+            axios.get(
+              "question.php?Authorization=" +
+                getState().quiz.token +
+                "&type=" +
+                getState().quiz.type +
+                "&code=" +
+                prevCode +
+                "&aid=" +
+                prevAid +
+                "&" +
+                name +
+                "=" +
+                value
+            )
+          );
       }, 1000);
     }
   };
@@ -390,7 +473,18 @@ export const clickedonQuizCard = (index, prevAid, prevCode) => {
             dispatch(saveFetchedQuizData(code, result, token));
             dispatch(nullAnswerIndex());
           })
-          .catch((error) => console.log(error));
+          .catch((error) =>
+            axios.get(
+              "question.php?Authorization=" +
+                getState().quiz.token +
+                "&type=" +
+                getState().quiz.type +
+                "&code=" +
+                prevCode +
+                "&aid=" +
+                prevAid
+            )
+          );
       }, 1000);
     } else {
       if (getState().quiz.QuizResult.nextPage === "preCheckout") {

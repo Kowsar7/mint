@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import classes from "./plans.module.css";
 import CommonContainer from "./commonContainer/commonContainer";
 import Breakdown from "./breakdown/breakdown";
-import PromoCodeForm from "./promoCodeForm/promoCodeForm";
+// import PromoCodeForm from "./promoCodeForm/promoCodeForm";
 import Legal from "./legal/legal";
 import * as actionCreators from "../../../redux/actions";
 
@@ -30,7 +30,7 @@ const plans = (props) => {
               />
             ))}
           </div>
-          <PromoCodeForm />
+          {/* <PromoCodeForm /> */}
         </div>
         <div className={classes.ButtonContainer}>
           <button
