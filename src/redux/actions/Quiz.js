@@ -140,7 +140,7 @@ export const fetchData = () => {
     const type = getState().quiz.type;
     dispatch(loadingTrue());
     axios
-      .get("/main/question.php?type=" + type + "&aid=start")
+      .get("question.php?type=" + type + "&aid=start")
       .then((res) => {
         console.log("fetchData", res);
         const code = res.data.result.code;
@@ -159,7 +159,7 @@ export const fetchCheckoutData = () => {
     dispatch(loadingTrue());
     axios
       .get(
-        "/main/checkout.php?Authorization=" +
+        "checkout.php?Authorization=" +
           getState().quiz.token +
           "&type=" +
           getState().quiz.type +
@@ -167,14 +167,6 @@ export const fetchCheckoutData = () => {
           getState().quiz.code
       )
       .then((res) => {
-        console.log(
-          "/main/checkout.php?Authorization=" +
-            getState().quiz.token +
-            "&type=" +
-            getState().quiz.type +
-            "&code=" +
-            getState().quiz.code
-        );
         console.log("checkout", res);
         const code = res.data.result.code;
         const result = res.data.result;
@@ -204,7 +196,7 @@ export const clickedonNextButton = (prevCode, answerIndexes) => {
     setTimeout(() => {
       axios
         .get(
-          "/main/question.php?Authorization=" +
+          "question.php?Authorization=" +
             getState().quiz.token +
             "&type=" +
             getState().quiz.type +
@@ -237,7 +229,7 @@ export const goNext = (prevAid, prevCode) => {
         : setTimeout(() => {
             axios
               .get(
-                "/main/question.php?Authorization=" +
+                "question.php?Authorization=" +
                   getState().quiz.token +
                   "&type=" +
                   getState().quiz.type +
@@ -262,7 +254,7 @@ export const goNext = (prevAid, prevCode) => {
         setTimeout(() => {
           axios
             .get(
-              "/main/preCheckout.php?code=" +
+              "preCheckout.php?code=" +
                 prevCode +
                 "&Authorization=" +
                 getState().quiz.token
@@ -282,7 +274,7 @@ export const goNext = (prevAid, prevCode) => {
         setTimeout(() => {
           axios
             .get(
-              "/main/checkout.php?Authorization=" +
+              "checkout.php?Authorization=" +
                 getState().quiz.token +
                 "&type=" +
                 getState().quiz.type +
@@ -357,7 +349,7 @@ export const sendInput = (prevAid, prevCode, name) => {
       setTimeout(() => {
         axios
           .get(
-            "/main/question.php?Authorization=" +
+            "question.php?Authorization=" +
               getState().quiz.token +
               "&type=" +
               getState().quiz.type +
@@ -394,7 +386,7 @@ export const clickedonQuizCard = (index, prevAid, prevCode) => {
       setTimeout(() => {
         axios
           .get(
-            "/main/question.php?Authorization=" +
+            "question.php?Authorization=" +
               getState().quiz.token +
               "&type=" +
               getState().quiz.type +
@@ -420,7 +412,7 @@ export const clickedonQuizCard = (index, prevAid, prevCode) => {
         setTimeout(() => {
           axios
             .get(
-              "/main/preCheckout.php?code=" +
+              "preCheckout.php?code=" +
                 prevCode +
                 "&Authorization=" +
                 getState().quiz.token
@@ -440,7 +432,7 @@ export const clickedonQuizCard = (index, prevAid, prevCode) => {
         setTimeout(() => {
           axios
             .get(
-              "/main/checkout.php?Authorization=" +
+              "checkout.php?Authorization=" +
                 getState().quiz.token +
                 "&type=" +
                 getState().quiz.type +

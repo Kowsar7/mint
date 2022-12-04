@@ -151,17 +151,10 @@
 .Image {
     position: absolute;
     z-index: 1;
-    /* right: 11px; */
-    right: -1px;
-    /* bottom: 48px; */
+    right: 11px;
     width: 100%;
-    max-width: 167px;
-    /* opacity: 0;
-    transform: translateX(20px);
-    transition: all 1s ease-in-out 2s;
-    
-    opacity: 1;
-    transform: translateX(0); */
+    max-width: 143px;
+    bottom: 0;
 }
 
 .NoteContainer {

@@ -37,7 +37,7 @@ export const preToCheckout = () => {
     setTimeout(() => {
       axios
         .get(
-          "/main/checkout.php?Authorization=" +
+          "checkout.php?Authorization=" +
             getState().quiz.token +
             "&type=" +
             getState().quiz.type +

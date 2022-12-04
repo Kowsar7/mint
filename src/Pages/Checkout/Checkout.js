@@ -35,7 +35,7 @@ const Checkout = (props) => {
     };
     // eslint-disable-next-line
   }, []);
-  console.log(props);
+
   return (
     <div
       className={classes.PageContainer}
@@ -128,7 +128,6 @@ const Checkout = (props) => {
                     className={classes.StickyPulsingButton}
                     data-button="countdown-button"
                     onClick={() => props.onButton()}
-                    // onClick={() => props.router.navigate("/")}
                   >
                     دریافت برنامه
                   </button>
