@@ -33,7 +33,7 @@ function App() {
         <Route path="/preCheckout" element={<AsyncPreCheckout />} />
         <Route path="/checkout" element={<AsyncCheckout />} />
         <Route path="/signIn" element={<AsyncLogin />} />
-        <Route path="/" exact element={<AsyncQuiz />} />
+        <Route path="*" exact element={<AsyncQuiz />} />
       </Routes>
     </div>
   );

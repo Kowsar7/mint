@@ -24,6 +24,10 @@ const Checkout = (props) => {
 
   useEffect(() => {
     props.fetchCheckoutData();
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       let position = window.pageYOffset;
       setVisible(position > 100);

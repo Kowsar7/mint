@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import classes from "./Prepayment.module.css";
@@ -13,6 +13,13 @@ import Spinner from "../../Components/UI/Spinner/Spinner";
 import * as actionCreators from "../../redux/actions";
 
 const PrePayment = (props) => {
+  // const { fetchPreCheckoutData } = props.fetchPreCheckoutData;
+
+  useEffect(() => {
+    props.fetchPreCheckoutData();
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <Auxiliary>
       {props.checkout === true ? (
@@ -56,6 +63,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   goTocheckout: () => dispatch(actionCreators.preToCheckout()),
+  fetchPreCheckoutData: () => dispatch(actionCreators.fetchPreCheckoutData()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PrePayment);

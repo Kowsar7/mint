@@ -24,6 +24,7 @@ export {
   loadingTrue,
   loadingFalse,
   fetchCheckoutData,
+  fetchPreCheckoutData,
 } from "./Quiz";
 
 export {

@@ -20,7 +20,7 @@ const initialState = {
   code: "",
   aid: "",
   QuizResult: {},
-  CheckoutResult: {},
+  CheckoutResult: null,
   PreCheckoutResult: {},
   inputError: false,
   token: "",
@@ -136,7 +136,7 @@ const quizReducer = (state = initialState, action) => {
     case actionTypes.SAVE_TYPE:
       return updateObject(state, { type: action.linkType });
     case actionTypes.GO_TO_CHECKOUT:
-      return updateObject(state, { checkout: true });
+      return updateObject(state, { checkout: true, checkout2: false });
     case actionTypes.GO_TO_CHECKOUT2:
       return updateObject(state, { checkout2: true, checkout: false });
     case actionTypes.LOADING_TRUE:

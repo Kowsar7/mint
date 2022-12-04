@@ -140,7 +140,7 @@ export const fetchData = () => {
     const type = getState().quiz.type;
     dispatch(loadingTrue());
     axios
-      .get("question.php?type=" + type + "&aid=start")
+      .get("question.php?test=true&type=" + type + "&aid=start")
       .then((res) => {
         console.log("fetchData", res);
         const code = res.data.result.code;
@@ -174,6 +174,29 @@ export const fetchCheckoutData = () => {
         dispatch(loadingFalse());
         dispatch(saveFetchedCheckoutData(code, result, token));
         dispatch(goToCheckout2());
+      })
+      .catch((error) => console.log(error));
+  };
+};
+
+export const fetchPreCheckoutData = () => {
+  return (dispatch, getState) => {
+    dispatch(loadingTrue());
+    axios
+      .get(
+        "preCheckout.php?code=" +
+          getState().quiz.code +
+          "&Authorization=" +
+          getState().quiz.token
+      )
+      .then((res) => {
+        console.log("preCheckout", res);
+        const code = res.data.result.code;
+        const result = res.data.result;
+        const token = res.data.result.token;
+        dispatch(loadingFalse());
+        dispatch(saveFetchedPreCheckoutData(code, result, token));
+        dispatch(goToCheckout());
       })
       .catch((error) => console.log(error));
   };
@@ -251,47 +274,9 @@ export const goNext = (prevAid, prevCode) => {
           }, 1000);
     } else {
       if (getState().quiz.QuizResult.nextPage === "preCheckout") {
-        setTimeout(() => {
-          axios
-            .get(
-              "preCheckout.php?code=" +
-                prevCode +
-                "&Authorization=" +
-                getState().quiz.token
-            )
-            .then((res) => {
-              console.log("goNext-preCheckout", res);
-              const code = res.data.result.code;
-              const result = res.data.result;
-              const token = res.data.result.token;
-              dispatch(loadingFalse());
-              dispatch(saveFetchedPreCheckoutData(code, result, token));
-              dispatch(goToCheckout());
-            })
-            .catch((error) => console.log(error));
-        }, 1000);
+        dispatch(fetchPreCheckoutData());
       } else if (getState().quiz.QuizResult.nextPage === "checkout") {
-        setTimeout(() => {
-          axios
-            .get(
-              "checkout.php?Authorization=" +
-                getState().quiz.token +
-                "&type=" +
-                getState().quiz.type +
-                "&code=" +
-                getState().quiz.code
-            )
-            .then((res) => {
-              console.log("goNext-checkout", res);
-              const code = res.data.result.code;
-              const result = res.data.result;
-              const token = res.data.result.token;
-              dispatch(loadingFalse());
-              dispatch(saveFetchedCheckoutData(code, result, token));
-              dispatch(goToCheckout2());
-            })
-            .catch((error) => console.log(error));
-        }, 1000);
+        dispatch(fetchCheckoutData());
       }
     }
   };
@@ -409,47 +394,9 @@ export const clickedonQuizCard = (index, prevAid, prevCode) => {
       }, 1000);
     } else {
       if (getState().quiz.QuizResult.nextPage === "preCheckout") {
-        setTimeout(() => {
-          axios
-            .get(
-              "preCheckout.php?code=" +
-                prevCode +
-                "&Authorization=" +
-                getState().quiz.token
-            )
-            .then((res) => {
-              console.log("goNext-preCheckout", res);
-              const code = res.data.result.code;
-              const result = res.data.result;
-              const token = res.data.result.token;
-              dispatch(loadingFalse());
-              dispatch(saveFetchedPreCheckoutData(code, result, token));
-              dispatch(goToCheckout());
-            })
-            .catch((error) => console.log(error));
-        }, 1000);
+        dispatch(fetchPreCheckoutData());
       } else if (getState().quiz.QuizResult.nextPage === "checkout") {
-        setTimeout(() => {
-          axios
-            .get(
-              "checkout.php?Authorization=" +
-                getState().quiz.token +
-                "&type=" +
-                getState().quiz.type +
-                "&code=" +
-                getState().quiz.code
-            )
-            .then((res) => {
-              console.log("goNext-checkout", res);
-              const code = res.data.result.code;
-              const result = res.data.result;
-              const token = res.data.result.token;
-              dispatch(loadingFalse());
-              dispatch(saveFetchedCheckoutData(code, result, token));
-              dispatch(goToCheckout2());
-            })
-            .catch((error) => console.log(error));
-        }, 1000);
+        dispatch(fetchCheckoutData());
       }
     }
   };
